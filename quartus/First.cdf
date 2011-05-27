@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C70F896) Path("/disk/svr216/sdc1/nfi/nicolae.namolovan/quartus/") File("First.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C70F896) Path("/disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/quartus/") File("First.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

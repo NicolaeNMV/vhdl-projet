@@ -35,7 +35,7 @@ ARCHITECTURE Montage OF busToRS232 IS
     -- Compteur
     TYPE T_CMD_i IS (NOOP, COUNT, INIT);
     SIGNAL CMD_i :  T_CMD_i; 
-    SIGNAL R_i   :  INTEGER RANGE 0 TO 4;
+    SIGNAL R_i   :  INTEGER RANGE 0 TO 15;
     SIGNAL endloop:  STD_LOGIC;
 
     -- Registre pour la donnée de 32 bits 
@@ -74,8 +74,6 @@ BEGIN
     END IF; END PROCESS;
 
     endLoop <= '1' when R_i=0 else '0';
-    Ndata <= '1' when state = W_RS232OUT else '0';
-    busin_eated <= '1' when state = W_ND else '0';
     Data <= R_32(31 downto 24);
 
 -------------------------------------------------------------------------------
@@ -97,19 +95,20 @@ BEGIN
                 WHEN LOOP_WRITE =>
                     if endLoop = '1' then
                         state <= W_ND;
-                    else
+                    elsif Busy = '0' then
                         state <= W_RS232OUT;
                     end if;
                 WHEN W_RS232OUT =>
-                    if Busy = '0' then
-                        state <= SHIFT;
-                    end if;
+                    state <= SHIFT;
                 WHEN SHIFT =>
                     state <= LOOP_WRITE;
 
             END CASE;
         END IF;
     END PROCESS;
+
+    Ndata <= '1'   when state = W_RS232OUT else '0';
+    busin_eated <= '1' when state = W_ND else '0';
 
     -- fonction de sortie  
     WITH state SELECT CMD_i <=

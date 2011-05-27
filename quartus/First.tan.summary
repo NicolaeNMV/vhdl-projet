@@ -5,41 +5,41 @@ Timing Analyzer Summary
 Type           : Worst-case tsu
 Slack          : N/A
 Required Time  : None
-Actual Time    : 4.673 ns
-From           : busin[6]
-To             : R_32[6]
+Actual Time    : 5.776 ns
+From           : RX
+To             : rs232in:inst|state.WAIT_StartBit
 From Clock     : --
-To Clock       : clk
+To Clock       : CLK
 Failed Paths   : 0
 
 Type           : Worst-case tco
 Slack          : N/A
 Required Time  : None
-Actual Time    : 7.207 ns
-From           : R_32[29]
-To             : Data[5]
-From Clock     : clk
+Actual Time    : 9.910 ns
+From           : busFromRS232:inst3|R_32[31]
+To             : D[7]
+From Clock     : CLK
 To Clock       : --
 Failed Paths   : 0
 
 Type           : Worst-case th
 Slack          : N/A
 Required Time  : None
-Actual Time    : 0.371 ns
-From           : Busy
-To             : state.SHIFT
+Actual Time    : -4.071 ns
+From           : RX
+To             : rs232in:inst|R_sh[7]
 From Clock     : --
-To Clock       : clk
+To Clock       : CLK
 Failed Paths   : 0
 
-Type           : Clock Setup: 'clk'
+Type           : Clock Setup: 'CLK'
 Slack          : N/A
 Required Time  : None
-Actual Time    : Restricted to 420.17 MHz ( period = 2.380 ns )
-From           : state.SHIFT
-To             : R_32[7]
-From Clock     : clk
-To Clock       : clk
+Actual Time    : 336.70 MHz ( period = 2.970 ns )
+From           : rs232in:inst|R_baud[1]
+To             : rs232in:inst|R_baud[12]
+From Clock     : CLK
+To Clock       : CLK
 Failed Paths   : 0
 
 Type           : Total number of failed paths

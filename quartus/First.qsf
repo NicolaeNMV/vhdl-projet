@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE EP2C70F896C6
-set_global_assignment -name TOP_LEVEL_ENTITY busToRS232
+set_global_assignment -name TOP_LEVEL_ENTITY Schema
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 10.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:12:28  MAY 20, 2011"
 set_global_assignment -name LAST_QUARTUS_VERSION 10.0
@@ -64,6 +64,7 @@ set_global_assignment -name VHDL_FILE rs232out.vhd
 set_global_assignment -name VHDL_FILE busToRS232.vhd
 set_global_assignment -name VHDL_FILE adder12.vhd
 set_global_assignment -name VHDL_FILE busFromRS232.vhd
+set_global_assignment -name MISC_FILE "/disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/quartus/First.dpf"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
