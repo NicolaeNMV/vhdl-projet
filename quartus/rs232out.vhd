@@ -50,6 +50,7 @@ ARCHITECTURE Montage_1 OF rs232out IS
                                                    --  8:1 : 8 data bits
 																	--    1 : 1 end bit
     SIGNAL CMD_F1 :  STD_LOGIC; 
+	 SIGNAL CMD_BUSY :  STD_LOGIC; 
 	 
     --Description des états
     TYPE STATE_TYPE IS ( W_ND, SLOOP, W_B, SHIFT );
@@ -64,7 +65,7 @@ BEGIN
     VT_endbaud <= '1' when R_baud=0 else '0';
     VT_endLoop <= '1' when R_i=9 else '0';
     Tx <= R_data(0) when CMD_F1='0' else '1';
-    Busy <= '0' when R_i=9 else '1';
+    Busy <= '0' when CMD_BUSY='0' else '1';
     PROCESS (clk)
     BEGIN if clk'event and clk='1' then
         -- registre R_baud
@@ -163,5 +164,11 @@ BEGIN
 		'0' when W_B,
 		'0' when SHIFT;
 
+	 WITH state SELECT CMD_BUSY <=
+		'0' when W_ND,
+		'1' when SLOOP,
+		'1' when W_B,
+		'1' when SHIFT;
+		
 END Montage_1;
 
