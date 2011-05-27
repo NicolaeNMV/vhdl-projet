@@ -1,0 +1,4 @@
+quartus/db/
+quartus/incremental_db/
+*.swp
+*.bak
