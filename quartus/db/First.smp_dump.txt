@@ -1,0 +1,17 @@
+
+State Machine - |Rs232Test|rs232in:inst|state
+Name state.WAIT_FIN state.GEN_PULSE state.WAIT_1B state.ECRIRE state.MainLoop state.WAIT_1P5B state.WAIT_StartBit 
+state.WAIT_StartBit 0 0 0 0 0 0 0 
+state.WAIT_1P5B 0 0 0 0 0 1 1 
+state.MainLoop 0 0 0 0 1 0 1 
+state.ECRIRE 0 0 0 1 0 0 1 
+state.WAIT_1B 0 0 1 0 0 0 1 
+state.GEN_PULSE 0 1 0 0 0 0 1 
+state.WAIT_FIN 1 0 0 0 0 0 1 
+
+State Machine - |Rs232Test|rs232out:inst1|state
+Name state.SHIFT state.W_B state.SLOOP state.W_ND 
+state.W_ND 0 0 0 0 
+state.SLOOP 0 0 1 1 
+state.W_B 0 1 0 1 
+state.SHIFT 1 0 0 1 

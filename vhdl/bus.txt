@@ -1,0 +1,31 @@
+Format du bus 32 bits
+
+Bus adresse/status/donnees
+   bits 31-27 ( 5): adresse
+
+   bits 26-24 ( 3): status
+           26: 0 requete non traitee
+           25: status de la requete (0=ok, 1=erreur)
+           24: libre pour la requete.
+
+   bits 23- 0 (24): data
+
+Bus controle en entree:
+    valid (1): entree
+                1: la donnee sur le bus est valide
+                0: pas de donnée sur le bus.
+    eated (1): sortie
+                1: la donnee sur le bus est mangee
+                   --> le producteur peut presenter la suivante.
+                0: la donnee sur le bus n'est pas consommée.
+               remarque: eated a 1 quand il n'y a pas de donnee est autorise
+                         et est ignore par le producteur.
+                
+Bus controle en sortie:
+    valid (1): sortie
+                1: la donnee sur le bus est valide
+                0: pas de donnée sur le bus.
+    eated (1): entree
+                1: la donnee sur le bus est mangee
+                    --> il faut presenter la suivante.
+                0: la donnee sur le bus n'est pas consommée.

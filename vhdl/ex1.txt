@@ -1,0 +1,26 @@
+/***********************
+tant que (rx = 1) faire
+    attendre 1.5 band
+    pour i = 0:7 faire
+        R(i) <- Rx
+        attendre 1 band
+    fait
+    attendre 1 band
+    et emettre R
+fait
+************************/
+
+En circuit : PC et PO
+
+PO :
+boite band :
+ * instructions depuis PC: I1.5, I1, CNT
+
+boite i :
+ * instructions depuis PC: INIT, CNT, NOOP
+
+boite R :
+ * instructions depuis PC: SHIFT, NOOP
+
+
+ RX ---> R --> sortie DATA

@@ -1,0 +1,102 @@
+|Rs232Test
+busy <= rs232out:inst1.Busy
+CLK => rs232out:inst1.clk
+CLK => rs232in:inst.clk
+RX => rs232in:inst.Rx
+Tx <= rs232out:inst1.Tx
+nData <= rs232in:inst.Ndata
+D[0] <= rs232in:inst.Data[0]
+D[1] <= rs232in:inst.Data[1]
+D[2] <= rs232in:inst.Data[2]
+D[3] <= rs232in:inst.Data[3]
+D[4] <= rs232in:inst.Data[4]
+D[5] <= rs232in:inst.Data[5]
+D[6] <= rs232in:inst.Data[6]
+D[7] <= rs232in:inst.Data[7]
+
+
+|Rs232Test|rs232out:inst1
+clk => R_data[0].CLK
+clk => R_data[1].CLK
+clk => R_data[2].CLK
+clk => R_data[3].CLK
+clk => R_data[4].CLK
+clk => R_data[5].CLK
+clk => R_data[6].CLK
+clk => R_data[7].CLK
+clk => R_data[8].CLK
+clk => R_data[9].CLK
+clk => R_i[0].CLK
+clk => R_i[1].CLK
+clk => R_i[2].CLK
+clk => R_i[3].CLK
+clk => R_baud[0].CLK
+clk => R_baud[1].CLK
+clk => R_baud[2].CLK
+clk => R_baud[3].CLK
+clk => R_baud[4].CLK
+clk => R_baud[5].CLK
+clk => R_baud[6].CLK
+clk => R_baud[7].CLK
+clk => R_baud[8].CLK
+clk => R_baud[9].CLK
+clk => R_baud[10].CLK
+clk => R_baud[11].CLK
+clk => R_baud[12].CLK
+clk => state~3.DATAIN
+Tx <= Tx.DB_MAX_OUTPUT_PORT_TYPE
+Busy <= Equal1.DB_MAX_OUTPUT_PORT_TYPE
+Ndata => Selector1.IN3
+Ndata => Selector0.IN1
+Data[0] => R_data.DATAB
+Data[1] => R_data.DATAB
+Data[2] => R_data.DATAB
+Data[3] => R_data.DATAB
+Data[4] => R_data.DATAB
+Data[5] => R_data.DATAB
+Data[6] => R_data.DATAB
+Data[7] => R_data.DATAB
+
+
+|Rs232Test|rs232in:inst
+clk => R_sh[0].CLK
+clk => R_sh[1].CLK
+clk => R_sh[2].CLK
+clk => R_sh[3].CLK
+clk => R_sh[4].CLK
+clk => R_sh[5].CLK
+clk => R_sh[6].CLK
+clk => R_sh[7].CLK
+clk => R_i[0].CLK
+clk => R_i[1].CLK
+clk => R_i[2].CLK
+clk => R_i[3].CLK
+clk => R_baud[0].CLK
+clk => R_baud[1].CLK
+clk => R_baud[2].CLK
+clk => R_baud[3].CLK
+clk => R_baud[4].CLK
+clk => R_baud[5].CLK
+clk => R_baud[6].CLK
+clk => R_baud[7].CLK
+clk => R_baud[8].CLK
+clk => R_baud[9].CLK
+clk => R_baud[10].CLK
+clk => R_baud[11].CLK
+clk => R_baud[12].CLK
+clk => R_baud[13].CLK
+clk => state~1.DATAIN
+Rx => Selector0.IN2
+Rx => Selector1.IN1
+Rx => R_sh[7].DATAIN
+Ndata <= Ndata.DB_MAX_OUTPUT_PORT_TYPE
+Data[0] <= R_sh[0].DB_MAX_OUTPUT_PORT_TYPE
+Data[1] <= R_sh[1].DB_MAX_OUTPUT_PORT_TYPE
+Data[2] <= R_sh[2].DB_MAX_OUTPUT_PORT_TYPE
+Data[3] <= R_sh[3].DB_MAX_OUTPUT_PORT_TYPE
+Data[4] <= R_sh[4].DB_MAX_OUTPUT_PORT_TYPE
+Data[5] <= R_sh[5].DB_MAX_OUTPUT_PORT_TYPE
+Data[6] <= R_sh[6].DB_MAX_OUTPUT_PORT_TYPE
+Data[7] <= R_sh[7].DB_MAX_OUTPUT_PORT_TYPE
+
+

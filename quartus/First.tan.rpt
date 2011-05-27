@@ -1,0 +1,450 @@
+Classic Timing Analyzer report for First
+Wed May 25 11:41:01 2011
+Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Classic Timing Analyzer Deprecation
+  3. Timing Analyzer Summary
+  4. Timing Analyzer Settings
+  5. Clock Settings Summary
+  6. Parallel Compilation
+  7. Clock Setup: 'CLK'
+  8. tsu
+  9. tco
+ 10. th
+ 11. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
+---------------------------------------
+; Classic Timing Analyzer Deprecation ;
+---------------------------------------
+Classic Timing Analyzer will not be available in a future release of the Quartus II software. Use the TimeQuest Timing Analyzer to run timing analysis on your design. Convert all the project settings and the timing constraints to TimeQuest Timing Analyzer equivalents.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                       ;
++------------------------------+-------+---------------+----------------------------------+---------------------------+----------------------------------+------------+----------+--------------+
+; Type                         ; Slack ; Required Time ; Actual Time                      ; From                      ; To                               ; From Clock ; To Clock ; Failed Paths ;
++------------------------------+-------+---------------+----------------------------------+---------------------------+----------------------------------+------------+----------+--------------+
+; Worst-case tsu               ; N/A   ; None          ; 4.842 ns                         ; RX                        ; rs232in:inst|state.WAIT_StartBit ; --         ; CLK      ; 0            ;
+; Worst-case tco               ; N/A   ; None          ; 11.264 ns                        ; rs232out:inst1|state.W_ND ; Tx                               ; CLK        ; --       ; 0            ;
+; Worst-case th                ; N/A   ; None          ; -4.436 ns                        ; RX                        ; rs232in:inst|R_sh[7]             ; --         ; CLK      ; 0            ;
+; Clock Setup: 'CLK'           ; N/A   ; None          ; 398.09 MHz ( period = 2.512 ns ) ; rs232in:inst|R_baud[9]    ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; 0            ;
+; Total number of failed paths ;       ;               ;                                  ;                           ;                                  ;            ;          ; 0            ;
++------------------------------+-------+---------------+----------------------------------+---------------------------+----------------------------------+------------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C70F896C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                             ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; CLK             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++-----------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 2      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'CLK'                                                                                                                                                                                                                                                              ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                             ; To                               ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 398.09 MHz ( period = 2.512 ns )                    ; rs232in:inst|R_baud[9]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.297 ns                ;
+; N/A                                     ; 398.25 MHz ( period = 2.511 ns )                    ; rs232in:inst|R_baud[9]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.296 ns                ;
+; N/A                                     ; 398.25 MHz ( period = 2.511 ns )                    ; rs232in:inst|R_baud[9]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.296 ns                ;
+; N/A                                     ; 398.88 MHz ( period = 2.507 ns )                    ; rs232in:inst|R_baud[9]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.292 ns                ;
+; N/A                                     ; 398.88 MHz ( period = 2.507 ns )                    ; rs232in:inst|R_baud[9]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.292 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[8]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.154 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[9]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 2.154 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[8]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.153 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[8]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.153 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[8]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.149 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[8]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.149 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 2.144 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.109 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 2.109 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.108 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.108 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.104 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.104 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 2.074 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.072 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 2.073 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.071 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.071 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.068 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.067 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.067 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.067 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.067 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.063 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.063 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 2.038 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 2.038 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[11]          ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 2.029 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[11]          ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 2.028 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[11]          ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 2.028 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[11]          ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 2.024 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[11]          ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 2.024 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[10]        ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 2.012 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 2.006 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[5]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 2.003 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 2.003 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 2.002 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 1.999 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 1.968 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[10]        ; CLK        ; CLK      ; None                        ; None                      ; 1.967 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.967 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.935 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.934 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.934 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.932 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.932 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.930 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.930 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.931 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 1.928 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[7]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.915 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.913 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.912 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.912 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.908 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.908 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[7]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[4]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[6]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[5]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[8]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[1]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[3]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[0]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.ECRIRE        ; rs232in:inst|R_baud[2]           ; CLK        ; CLK      ; None                        ; None                      ; 1.906 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[11]        ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.899 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[3]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 1.897 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 1.897 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.897 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[9]         ; CLK        ; CLK      ; None                        ; None                      ; 1.896 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.896 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_i[0]              ; CLK        ; CLK      ; None                        ; None                      ; 1.874 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.861 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.861 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.860 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[10]        ; CLK        ; CLK      ; None                        ; None                      ; 1.857 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.856 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.834 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.833 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.833 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.829 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.829 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.826 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[3]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 1.826 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[10]        ; CLK        ; CLK      ; None                        ; None                      ; 1.826 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.826 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.826 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[8]         ; CLK        ; CLK      ; None                        ; None                      ; 1.825 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.825 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[5]         ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[7]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[4]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[6]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[5]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[8]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[1]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[3]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[0]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_baud[2]           ; CLK        ; CLK      ; None                        ; None                      ; 1.823 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[12]          ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.815 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[12]          ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.814 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[12]          ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.814 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[12]          ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.810 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[12]          ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.810 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[10]          ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.805 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[10]          ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.804 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[10]          ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.804 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[1]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[2]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[3]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[4]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[5]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[6]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[7]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|state.SHIFT       ; rs232out:inst1|R_data[8]         ; CLK        ; CLK      ; None                        ; None                      ; 1.802 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[10]          ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.800 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[10]          ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.800 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.790 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 1.790 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.789 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.789 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.790 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.790 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[8]           ; CLK        ; CLK      ; None                        ; None                      ; 1.789 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[9]         ; CLK        ; CLK      ; None                        ; None                      ; 1.786 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.785 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.785 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.785 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[6]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.777 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[9]         ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.755 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[9]         ; CLK        ; CLK      ; None                        ; None                      ; 1.755 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[3]         ; rs232out:inst1|R_baud[10]        ; CLK        ; CLK      ; None                        ; None                      ; 1.755 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.755 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.755 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[7]         ; CLK        ; CLK      ; None                        ; None                      ; 1.754 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.754 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.745 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_i[3]            ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.740 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[7]         ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.735 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.723 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 1.719 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[8]           ; CLK        ; CLK      ; None                        ; None                      ; 1.719 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.719 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[0]           ; rs232in:inst|R_baud[7]           ; CLK        ; CLK      ; None                        ; None                      ; 1.718 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[8]         ; CLK        ; CLK      ; None                        ; None                      ; 1.715 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_i[3]              ; CLK        ; CLK      ; None                        ; None                      ; 1.697 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_i[1]              ; CLK        ; CLK      ; None                        ; None                      ; 1.697 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.WAIT_StartBit ; rs232in:inst|R_i[2]              ; CLK        ; CLK      ; None                        ; None                      ; 1.697 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[13]          ; rs232in:inst|state.MainLoop      ; CLK        ; CLK      ; None                        ; None                      ; 1.688 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[13]          ; rs232in:inst|state.WAIT_StartBit ; CLK        ; CLK      ; None                        ; None                      ; 1.687 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[13]          ; rs232in:inst|state.WAIT_1B       ; CLK        ; CLK      ; None                        ; None                      ; 1.687 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_i[2]              ; rs232in:inst|state.GEN_PULSE     ; CLK        ; CLK      ; None                        ; None                      ; 1.689 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_i[2]            ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.684 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[3]         ; rs232out:inst1|R_baud[9]         ; CLK        ; CLK      ; None                        ; None                      ; 1.684 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[8]         ; CLK        ; CLK      ; None                        ; None                      ; 1.684 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[13]          ; rs232in:inst|state.WAIT_1P5B     ; CLK        ; CLK      ; None                        ; None                      ; 1.683 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[13]          ; rs232in:inst|state.WAIT_FIN      ; CLK        ; CLK      ; None                        ; None                      ; 1.683 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_i[2]              ; rs232in:inst|state.ECRIRE        ; CLK        ; CLK      ; None                        ; None                      ; 1.686 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.684 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.684 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[6]         ; CLK        ; CLK      ; None                        ; None                      ; 1.683 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[8]           ; CLK        ; CLK      ; None                        ; None                      ; 1.683 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[8]         ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.674 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[5]         ; rs232out:inst1|R_baud[12]        ; CLK        ; CLK      ; None                        ; None                      ; 1.666 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|state.MainLoop      ; rs232in:inst|R_i[0]              ; CLK        ; CLK      ; None                        ; None                      ; 1.652 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|R_baud[12]          ; CLK        ; CLK      ; None                        ; None                      ; 1.652 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|R_baud[10]        ; CLK        ; CLK      ; None                        ; None                      ; 1.648 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[1]           ; rs232in:inst|R_baud[7]           ; CLK        ; CLK      ; None                        ; None                      ; 1.648 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[3]           ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.648 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[1]         ; rs232out:inst1|R_baud[7]         ; CLK        ; CLK      ; None                        ; None                      ; 1.644 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_i[1]              ; rs232in:inst|state.GEN_PULSE     ; CLK        ; CLK      ; None                        ; None                      ; 1.618 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[10]        ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.613 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[2]         ; rs232out:inst1|R_baud[7]         ; CLK        ; CLK      ; None                        ; None                      ; 1.613 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[3]         ; rs232out:inst1|R_baud[8]         ; CLK        ; CLK      ; None                        ; None                      ; 1.613 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_i[1]              ; rs232in:inst|state.ECRIRE        ; CLK        ; CLK      ; None                        ; None                      ; 1.615 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[4]           ; rs232in:inst|R_baud[9]           ; CLK        ; CLK      ; None                        ; None                      ; 1.613 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[5]           ; rs232in:inst|R_baud[10]          ; CLK        ; CLK      ; None                        ; None                      ; 1.613 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[0]         ; rs232out:inst1|R_baud[5]         ; CLK        ; CLK      ; None                        ; None                      ; 1.612 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[2]           ; rs232in:inst|R_baud[7]           ; CLK        ; CLK      ; None                        ; None                      ; 1.612 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[6]         ; rs232out:inst1|state.SHIFT       ; CLK        ; CLK      ; None                        ; None                      ; 1.597 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_i[1]            ; rs232out:inst1|state.W_B         ; CLK        ; CLK      ; None                        ; None                      ; 1.595 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[5]         ; rs232out:inst1|R_baud[11]        ; CLK        ; CLK      ; None                        ; None                      ; 1.595 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[7]           ; rs232in:inst|R_baud[13]          ; CLK        ; CLK      ; None                        ; None                      ; 1.595 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232in:inst|R_baud[6]           ; rs232in:inst|R_baud[11]          ; CLK        ; CLK      ; None                        ; None                      ; 1.581 ns                ;
+; N/A                                     ; Restricted to 420.17 MHz ( period = 2.380 ns )      ; rs232out:inst1|R_baud[4]         ; rs232out:inst1|R_baud[9]         ; CLK        ; CLK      ; None                        ; None                      ; 1.577 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                                  ;                                  ;            ;          ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------------------+----------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; tsu                                                                                    ;
++-------+--------------+------------+------+----------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From ; To                               ; To Clock ;
++-------+--------------+------------+------+----------------------------------+----------+
+; N/A   ; None         ; 4.842 ns   ; RX   ; rs232in:inst|state.WAIT_1P5B     ; CLK      ;
+; N/A   ; None         ; 4.842 ns   ; RX   ; rs232in:inst|state.WAIT_StartBit ; CLK      ;
+; N/A   ; None         ; 4.666 ns   ; RX   ; rs232in:inst|R_sh[7]             ; CLK      ;
++-------+--------------+------------+------+----------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------+
+; tco                                                                                   ;
++-------+--------------+------------+------------------------------+-------+------------+
+; Slack ; Required tco ; Actual tco ; From                         ; To    ; From Clock ;
++-------+--------------+------------+------------------------------+-------+------------+
+; N/A   ; None         ; 11.264 ns  ; rs232out:inst1|state.W_ND    ; Tx    ; CLK        ;
+; N/A   ; None         ; 10.927 ns  ; rs232out:inst1|R_data[0]     ; Tx    ; CLK        ;
+; N/A   ; None         ; 8.905 ns   ; rs232in:inst|R_sh[7]         ; D[7]  ; CLK        ;
+; N/A   ; None         ; 7.136 ns   ; rs232in:inst|R_sh[6]         ; D[6]  ; CLK        ;
+; N/A   ; None         ; 7.124 ns   ; rs232out:inst1|R_i[3]        ; busy  ; CLK        ;
+; N/A   ; None         ; 7.068 ns   ; rs232out:inst1|R_i[2]        ; busy  ; CLK        ;
+; N/A   ; None         ; 7.014 ns   ; rs232in:inst|R_sh[4]         ; D[4]  ; CLK        ;
+; N/A   ; None         ; 7.010 ns   ; rs232in:inst|R_sh[3]         ; D[3]  ; CLK        ;
+; N/A   ; None         ; 6.979 ns   ; rs232out:inst1|R_i[1]        ; busy  ; CLK        ;
+; N/A   ; None         ; 6.847 ns   ; rs232out:inst1|R_i[0]        ; busy  ; CLK        ;
+; N/A   ; None         ; 6.844 ns   ; rs232in:inst|R_sh[5]         ; D[5]  ; CLK        ;
+; N/A   ; None         ; 6.747 ns   ; rs232in:inst|R_sh[1]         ; D[1]  ; CLK        ;
+; N/A   ; None         ; 6.643 ns   ; rs232in:inst|R_sh[0]         ; D[0]  ; CLK        ;
+; N/A   ; None         ; 6.381 ns   ; rs232in:inst|R_sh[2]         ; D[2]  ; CLK        ;
+; N/A   ; None         ; 6.243 ns   ; rs232in:inst|state.GEN_PULSE ; nData ; CLK        ;
++-------+--------------+------------+------------------------------+-------+------------+
+
+
++----------------------------------------------------------------------------------------------+
+; th                                                                                           ;
++---------------+-------------+-----------+------+----------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From ; To                               ; To Clock ;
++---------------+-------------+-----------+------+----------------------------------+----------+
+; N/A           ; None        ; -4.436 ns ; RX   ; rs232in:inst|R_sh[7]             ; CLK      ;
+; N/A           ; None        ; -4.612 ns ; RX   ; rs232in:inst|state.WAIT_1P5B     ; CLK      ;
+; N/A           ; None        ; -4.612 ns ; RX   ; rs232in:inst|state.WAIT_StartBit ; CLK      ;
++---------------+-------------+-----------+------+----------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Classic Timing Analyzer
+    Info: Version 10.0 Build 218 06/27/2010 SJ Web Edition
+    Info: Processing started: Wed May 25 11:41:00 2011
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off First -c First --timing_analysis_only
+Warning: Classic Timing Analyzer will not be available in a future release of the Quartus II software. Use the TimeQuest Timing Analyzer to run timing analysis on your design. Convert all the project settings and the timing constraints to TimeQuest Timing Analyzer equivalents.
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "CLK" is an undefined clock
+Info: Clock "CLK" has Internal fmax of 398.09 MHz between source register "rs232in:inst|R_baud[9]" and destination register "rs232in:inst|state.MainLoop" (period= 2.512 ns)
+    Info: + Longest register to register delay is 2.297 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X91_Y18_N21; Fanout = 3; REG Node = 'rs232in:inst|R_baud[9]'
+        Info: 2: + IC(0.738 ns) + CELL(0.398 ns) = 1.136 ns; Loc. = LCCOMB_X90_Y18_N30; Fanout = 1; COMB Node = 'rs232in:inst|Equal0~2'
+        Info: 3: + IC(0.258 ns) + CELL(0.393 ns) = 1.787 ns; Loc. = LCCOMB_X90_Y18_N2; Fanout = 5; COMB Node = 'rs232in:inst|Equal0~4'
+        Info: 4: + IC(0.276 ns) + CELL(0.150 ns) = 2.213 ns; Loc. = LCCOMB_X90_Y18_N16; Fanout = 1; COMB Node = 'rs232in:inst|state~11'
+        Info: 5: + IC(0.000 ns) + CELL(0.084 ns) = 2.297 ns; Loc. = LCFF_X90_Y18_N17; Fanout = 4; REG Node = 'rs232in:inst|state.MainLoop'
+        Info: Total cell delay = 1.025 ns ( 44.62 % )
+        Info: Total interconnect delay = 1.272 ns ( 55.38 % )
+    Info: - Smallest clock skew is -0.001 ns
+        Info: + Shortest clock path from clock "CLK" to destination register is 2.824 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.959 ns) = 0.959 ns; Loc. = PIN_AD15; Fanout = 1; CLK Node = 'CLK'
+            Info: 2: + IC(0.112 ns) + CELL(0.000 ns) = 1.071 ns; Loc. = CLKCTRL_G14; Fanout = 63; COMB Node = 'CLK~clkctrl'
+            Info: 3: + IC(1.216 ns) + CELL(0.537 ns) = 2.824 ns; Loc. = LCFF_X90_Y18_N17; Fanout = 4; REG Node = 'rs232in:inst|state.MainLoop'
+            Info: Total cell delay = 1.496 ns ( 52.97 % )
+            Info: Total interconnect delay = 1.328 ns ( 47.03 % )
+        Info: - Longest clock path from clock "CLK" to source register is 2.825 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.959 ns) = 0.959 ns; Loc. = PIN_AD15; Fanout = 1; CLK Node = 'CLK'
+            Info: 2: + IC(0.112 ns) + CELL(0.000 ns) = 1.071 ns; Loc. = CLKCTRL_G14; Fanout = 63; COMB Node = 'CLK~clkctrl'
+            Info: 3: + IC(1.217 ns) + CELL(0.537 ns) = 2.825 ns; Loc. = LCFF_X91_Y18_N21; Fanout = 3; REG Node = 'rs232in:inst|R_baud[9]'
+            Info: Total cell delay = 1.496 ns ( 52.96 % )
+            Info: Total interconnect delay = 1.329 ns ( 47.04 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: tsu for register "rs232in:inst|state.WAIT_1P5B" (data pin = "RX", clock pin = "CLK") is 4.842 ns
+    Info: + Longest pin to register delay is 7.702 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.840 ns) = 0.840 ns; Loc. = PIN_D21; Fanout = 3; PIN Node = 'RX'
+        Info: 2: + IC(6.340 ns) + CELL(0.438 ns) = 7.618 ns; Loc. = LCCOMB_X90_Y18_N12; Fanout = 1; COMB Node = 'rs232in:inst|Selector1~0'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 7.702 ns; Loc. = LCFF_X90_Y18_N13; Fanout = 7; REG Node = 'rs232in:inst|state.WAIT_1P5B'
+        Info: Total cell delay = 1.362 ns ( 17.68 % )
+        Info: Total interconnect delay = 6.340 ns ( 82.32 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "CLK" to destination register is 2.824 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.959 ns) = 0.959 ns; Loc. = PIN_AD15; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.112 ns) + CELL(0.000 ns) = 1.071 ns; Loc. = CLKCTRL_G14; Fanout = 63; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.216 ns) + CELL(0.537 ns) = 2.824 ns; Loc. = LCFF_X90_Y18_N13; Fanout = 7; REG Node = 'rs232in:inst|state.WAIT_1P5B'
+        Info: Total cell delay = 1.496 ns ( 52.97 % )
+        Info: Total interconnect delay = 1.328 ns ( 47.03 % )
+Info: tco from clock "CLK" to destination pin "Tx" through register "rs232out:inst1|state.W_ND" is 11.264 ns
+    Info: + Longest clock path from clock "CLK" to source register is 2.817 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.959 ns) = 0.959 ns; Loc. = PIN_AD15; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.112 ns) + CELL(0.000 ns) = 1.071 ns; Loc. = CLKCTRL_G14; Fanout = 63; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.209 ns) + CELL(0.537 ns) = 2.817 ns; Loc. = LCFF_X93_Y17_N29; Fanout = 17; REG Node = 'rs232out:inst1|state.W_ND'
+        Info: Total cell delay = 1.496 ns ( 53.11 % )
+        Info: Total interconnect delay = 1.321 ns ( 46.89 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 8.197 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X93_Y17_N29; Fanout = 17; REG Node = 'rs232out:inst1|state.W_ND'
+        Info: 2: + IC(0.580 ns) + CELL(0.393 ns) = 0.973 ns; Loc. = LCCOMB_X94_Y17_N0; Fanout = 1; COMB Node = 'rs232out:inst1|Tx~0'
+        Info: 3: + IC(4.436 ns) + CELL(2.788 ns) = 8.197 ns; Loc. = PIN_E21; Fanout = 0; PIN Node = 'Tx'
+        Info: Total cell delay = 3.181 ns ( 38.81 % )
+        Info: Total interconnect delay = 5.016 ns ( 61.19 % )
+Info: th for register "rs232in:inst|R_sh[7]" (data pin = "RX", clock pin = "CLK") is -4.436 ns
+    Info: + Longest clock path from clock "CLK" to destination register is 2.826 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.959 ns) = 0.959 ns; Loc. = PIN_AD15; Fanout = 1; CLK Node = 'CLK'
+        Info: 2: + IC(0.112 ns) + CELL(0.000 ns) = 1.071 ns; Loc. = CLKCTRL_G14; Fanout = 63; COMB Node = 'CLK~clkctrl'
+        Info: 3: + IC(1.218 ns) + CELL(0.537 ns) = 2.826 ns; Loc. = LCFF_X94_Y18_N19; Fanout = 3; REG Node = 'rs232in:inst|R_sh[7]'
+        Info: Total cell delay = 1.496 ns ( 52.94 % )
+        Info: Total interconnect delay = 1.330 ns ( 47.06 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 7.528 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.840 ns) = 0.840 ns; Loc. = PIN_D21; Fanout = 3; PIN Node = 'RX'
+        Info: 2: + IC(6.322 ns) + CELL(0.366 ns) = 7.528 ns; Loc. = LCFF_X94_Y18_N19; Fanout = 3; REG Node = 'rs232in:inst|R_sh[7]'
+        Info: Total cell delay = 1.206 ns ( 16.02 % )
+        Info: Total interconnect delay = 6.322 ns ( 83.98 % )
+Info: Quartus II 64-Bit Classic Timing Analyzer was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 456 megabytes
+    Info: Processing ended: Wed May 25 11:41:01 2011
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
