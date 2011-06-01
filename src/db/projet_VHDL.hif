@@ -1,0 +1,195 @@
+Quartus II 64-Bit
+Version 10.0 Build 218 06/27/2010 SJ Web Edition
+12
+1045
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Schema
+# storage
+db|projet_VHDL.(0).cnf
+db|projet_VHDL.(0).cnf
+# case_insensitive
+# source_file
+Schema.bdf
+a0b0f048c24cf08bfb87acb07571c55f
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+rs232out
+# storage
+db|projet_VHDL.(1).cnf
+db|projet_VHDL.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+rs232out.vhd
+44a4faf82775a35c2cb63163342ebedf
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+freq
+50000000
+PARAMETER_SIGNED_DEC
+USR
+baud
+9600
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+rs232out:inst1
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+busToRS232
+# storage
+db|projet_VHDL.(2).cnf
+db|projet_VHDL.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+busToRS232.vhd
+b0c8202f4577e15b5534a38d911f5d4f
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+busToRS232:inst2
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+busFromRS232
+# storage
+db|projet_VHDL.(3).cnf
+db|projet_VHDL.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+busFromRS232.vhd
+544d67412f1bb9371c631d8ca5998c51
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+busFromRS232:inst3
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+rs232in
+# storage
+db|projet_VHDL.(4).cnf
+db|projet_VHDL.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+rs232in.vhd
+d3f09ce9edf86a76d32c2ca9591661
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+freq
+50000000
+PARAMETER_SIGNED_DEC
+USR
+baud
+9600
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+rs232in:inst
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# complete
+

@@ -1,0 +1,31 @@
+
+State Machine - |Schema|rs232in:inst|state
+Name state.WAIT_FIN state.GEN_PULSE state.WAIT_1B state.ECRIRE state.MainLoop state.WAIT_1P5B state.WAIT_StartBit 
+state.WAIT_StartBit 0 0 0 0 0 0 0 
+state.WAIT_1P5B 0 0 0 0 0 1 1 
+state.MainLoop 0 0 0 0 1 0 1 
+state.ECRIRE 0 0 0 1 0 0 1 
+state.WAIT_1B 0 0 1 0 0 0 1 
+state.GEN_PULSE 0 1 0 0 0 0 1 
+state.WAIT_FIN 1 0 0 0 0 0 1 
+
+State Machine - |Schema|busFromRS232:inst3|state
+Name state.ST_EndLoop state.ST_WAIT_BUS state.ST_SHIFT_DATA state.ST_WAIT_RS232 
+state.ST_WAIT_RS232 0 0 0 0 
+state.ST_SHIFT_DATA 0 0 1 1 
+state.ST_WAIT_BUS 0 1 0 1 
+state.ST_EndLoop 1 0 0 1 
+
+State Machine - |Schema|busToRS232:inst2|state
+Name state.SHIFT state.W_RS232OUT state.LOOP_WRITE state.W_ND 
+state.W_ND 0 0 0 0 
+state.LOOP_WRITE 0 0 1 1 
+state.W_RS232OUT 0 1 0 1 
+state.SHIFT 1 0 0 1 
+
+State Machine - |Schema|rs232out:inst1|state
+Name state.SHIFT state.W_B state.SLOOP state.W_ND 
+state.W_ND 0 0 0 0 
+state.SLOOP 0 0 1 1 
+state.W_B 0 1 0 1 
+state.SHIFT 1 0 0 1 
