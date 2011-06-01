@@ -63,7 +63,7 @@ BEGIN
 --  Partie Opérative
 -------------------------------------------------------------------------------
     VT_endbaud <= '1' when R_baud=0 else '0';
-    VT_endLoop <= '1' when R_i=9 else '0';
+    VT_endLoop <= '1' when R_i=10 else '0';
     Tx <= R_data(0) when CMD_F1='0' else '1';
     Busy <= '0' when CMD_BUSY='0' else '1';
     PROCESS (clk)

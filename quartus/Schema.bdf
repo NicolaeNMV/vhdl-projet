@@ -72,7 +72,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 400 96 576 112)
+	(rect 640 440 816 456)
 	(text "OUTPUT" (rect 1 0 38 10)(font "Arial" (font_size 6)))
 	(text "D[7..0]" (rect 90 0 125 11)(font "Arial" ))
 	(pt 0 8)
@@ -85,7 +85,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 424 144 480 160))
+	(annotation_block (location)(rect 696 512 752 520))
 )
 (symbol
 	(rect -112 328 32 424)
@@ -324,17 +324,8 @@ applicable agreement for further details.
 	(pt 328 344)
 )
 (connector
-	(pt 328 328)
-	(pt 360 328)
-	(bus)
-)
-(connector
 	(pt 832 472)
 	(pt 360 472)
-)
-(connector
-	(pt 96 360)
-	(pt 32 360)
 )
 (connector
 	(pt 96 344)
@@ -410,48 +401,49 @@ applicable agreement for further details.
 	(pt 616 352)
 )
 (connector
-	(pt 600 368)
-	(pt 648 368)
-)
-(connector
-	(pt 600 384)
-	(pt 648 384)
-	(bus)
-)
-(connector
 	(pt 32 376)
 	(pt 96 376)
 	(bus)
 )
 (connector
-	(pt 360 336)
-	(pt 352 336)
-	(bus)
-)
-(connector
-	(text "X[31..0]" (rect 344 284 355 324)(font "Arial" )(vertical))
-	(pt 360 280)
-	(pt 360 328)
-	(bus)
+	(pt 32 360)
+	(pt 96 360)
 )
 (connector
 	(pt 360 328)
-	(pt 360 336)
-	(bus)
-)
-(connector
-	(pt 360 336)
 	(pt 360 368)
 	(bus)
 )
 (connector
-	(text "X[31..24]" (rect 378 88 424 99)(font "Arial" ))
-	(pt 400 104)
-	(pt 368 104)
+	(pt 328 328)
+	(pt 360 328)
+	(bus)
+)
+(connector
+	(pt 600 368)
+	(pt 648 368)
+)
+(connector
+	(pt 624 448)
+	(pt 624 384)
+	(bus)
+)
+(connector
+	(pt 600 384)
+	(pt 624 384)
+	(bus)
+)
+(connector
+	(pt 624 384)
+	(pt 648 384)
+	(bus)
+)
+(connector
+	(pt 624 448)
+	(pt 640 448)
 	(bus)
 )
 (junction (pt -112 224))
 (junction (pt 376 224))
 (junction (pt 72 224))
-(junction (pt 360 328))
-(junction (pt 360 336))
+(junction (pt 624 384))

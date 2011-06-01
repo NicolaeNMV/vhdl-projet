@@ -1,5 +1,5 @@
 Flow report for First
-Fri May 27 12:53:17 2011
+Wed Jun  1 09:46:23 2011
 Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +------------------------------------+------------------------------------------+
-; Flow Status                        ; Successful - Fri May 27 12:53:17 2011    ;
+; Flow Status                        ; Successful - Wed Jun  1 09:46:23 2011    ;
 ; Quartus II 64-Bit Version          ; 10.0 Build 218 06/27/2010 SJ Web Edition ;
 ; Revision Name                      ; First                                    ;
 ; Top-level Entity Name              ; Schema                                   ;
@@ -46,8 +46,8 @@ applicable agreement for further details.
 ; Device                             ; EP2C70F896C6                             ;
 ; Timing Models                      ; Final                                    ;
 ; Met timing requirements            ; Yes                                      ;
-; Total logic elements               ; 181 / 68,416 ( < 1 % )                   ;
-;     Total combinational functions  ; 141 / 68,416 ( < 1 % )                   ;
+; Total logic elements               ; 182 / 68,416 ( < 1 % )                   ;
+;     Total combinational functions  ; 142 / 68,416 ( < 1 % )                   ;
 ;     Dedicated logic registers      ; 142 / 68,416 ( < 1 % )                   ;
 ; Total registers                    ; 142                                      ;
 ; Total pins                         ; 11 / 622 ( 2 % )                         ;
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/27/2011 12:52:38 ;
+; Start date & time ; 06/01/2011 09:45:44 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; First               ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +-------------------------------------+----------------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                                ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 132226775121.130649355712428                                         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 132226768050.130691434401701                                         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                                   ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                    ; --            ; --          ; --         ;
 ; MISC_FILE                           ; /disk/svr216/sdc1/nfi/nicolae.namolovan/quartus/First.dpf            ; --            ; --          ; --         ;
@@ -92,11 +92,11 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:04     ; 1.0                     ; --                  ; 00:00:03                           ;
+; Analysis & Synthesis    ; 00:00:03     ; 1.0                     ; --                  ; 00:00:03                           ;
 ; Fitter                  ; 00:00:22     ; 1.0                     ; --                  ; 00:00:22                           ;
 ; Assembler               ; 00:00:07     ; 1.0                     ; --                  ; 00:00:07                           ;
 ; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; --                  ; 00:00:00                           ;
-; Total                   ; 00:00:34     ; --                      ; --                  ; 00:00:32                           ;
+; Total                   ; 00:00:33     ; --                      ; --                  ; 00:00:32                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -105,10 +105,10 @@ applicable agreement for further details.
 +-------------------------+-------------------------+-------------------------------+------------+----------------+
 ; Module Name             ; Machine Hostname        ; OS Name                       ; OS Version ; Processor type ;
 +-------------------------+-------------------------+-------------------------------+------------+----------------+
-; Analysis & Synthesis    ; pc228-20.tnet.ensiie.fr ; Linux pc228-20.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Fitter                  ; pc228-20.tnet.ensiie.fr ; Linux pc228-20.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Assembler               ; pc228-20.tnet.ensiie.fr ; Linux pc228-20.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Classic Timing Analyzer ; pc228-20.tnet.ensiie.fr ; Linux pc228-20.tnet.ensiie.fr ; 228        ; x86_64         ;
+; Analysis & Synthesis    ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
+; Fitter                  ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
+; Assembler               ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
+; Classic Timing Analyzer ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
 +-------------------------+-------------------------+-------------------------------+------------+----------------+
 
 
