@@ -55,7 +55,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 808 344 984 360)
+	(rect 880 344 1056 360)
 	(text "OUTPUT" (rect 1 0 38 10)(font "Arial" (font_size 6)))
 	(text "Tx" (rect 90 0 101 11)(font "Arial" ))
 	(pt 0 8)
@@ -68,7 +68,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 1000 344 1056 360))
+	(annotation_block (location)(rect 1072 344 1128 360))
 )
 (pin
 	(output)
@@ -135,7 +135,7 @@ applicable agreement for further details.
 	(annotation_block (parameter)(rect -160 464 16 504))
 )
 (symbol
-	(rect 648 320 800 416)
+	(rect 720 320 872 416)
 	(text "rs232out" (rect 5 0 46 11)(font "Arial" ))
 	(text "inst1" (rect 8 80 31 91)(font "Arial" ))
 	(port
@@ -186,7 +186,7 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 136 80))
 	)
-	(annotation_block (parameter)(rect 680 272 856 312))
+	(annotation_block (parameter)(rect 752 272 928 312))
 )
 (symbol
 	(rect 384 320 600 448)
@@ -295,6 +295,63 @@ applicable agreement for further details.
 		(rectangle (rect 16 16 216 112))
 	)
 )
+(symbol
+	(rect 408 48 640 176)
+	(text "racine" (rect 5 0 33 11)(font "Arial" ))
+	(text "inst4" (rect 8 112 31 123)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 11)(font "Arial" ))
+		(text "clk" (rect 21 27 35 38)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "busin[31..0]" (rect 0 0 60 11)(font "Arial" ))
+		(text "busin[31..0]" (rect 21 43 81 54)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "busin_valid" (rect 0 0 55 11)(font "Arial" ))
+		(text "busin_valid" (rect 21 59 76 70)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "busout_eated" (rect 0 0 62 11)(font "Arial" ))
+		(text "busout_eated" (rect 21 75 83 86)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 232 32)
+		(output)
+		(text "busin_eated" (rect 0 0 56 11)(font "Arial" ))
+		(text "busin_eated" (rect 134 27 190 38)(font "Arial" ))
+		(line (pt 232 32)(pt 216 32))
+	)
+	(port
+		(pt 232 48)
+		(output)
+		(text "busout[31..0]" (rect 0 0 66 11)(font "Arial" ))
+		(text "busout[31..0]" (rect 119 43 185 54)(font "Arial" ))
+		(line (pt 232 48)(pt 216 48)(line_width 3))
+	)
+	(port
+		(pt 232 64)
+		(output)
+		(text "busout_valid" (rect 0 0 61 11)(font "Arial" ))
+		(text "busout_valid" (rect 127 59 188 70)(font "Arial" ))
+		(line (pt 232 64)(pt 216 64))
+	)
+	(drawing
+		(rectangle (rect 16 16 216 112))
+	)
+)
 (connector
 	(pt -168 376)
 	(pt -112 376)
@@ -324,36 +381,12 @@ applicable agreement for further details.
 	(pt 328 344)
 )
 (connector
-	(pt 832 472)
-	(pt 360 472)
-)
-(connector
 	(pt 96 344)
 	(pt 56 344)
 )
 (connector
 	(pt 56 256)
 	(pt 56 344)
-)
-(connector
-	(pt 616 256)
-	(pt 56 256)
-)
-(connector
-	(pt 648 224)
-	(pt 648 352)
-)
-(connector
-	(pt 832 472)
-	(pt 832 368)
-)
-(connector
-	(pt 808 352)
-	(pt 800 352)
-)
-(connector
-	(pt 832 368)
-	(pt 800 368)
 )
 (connector
 	(pt 376 352)
@@ -368,37 +401,8 @@ applicable agreement for further details.
 	(pt 384 384)
 )
 (connector
-	(pt 344 344)
-	(pt 344 384)
-)
-(connector
-	(pt 360 368)
-	(pt 384 368)
-	(bus)
-)
-(connector
-	(pt 360 472)
-	(pt 360 400)
-)
-(connector
 	(pt 360 400)
 	(pt 384 400)
-)
-(connector
-	(pt 616 256)
-	(pt 616 352)
-)
-(connector
-	(pt 72 224)
-	(pt 376 224)
-)
-(connector
-	(pt 376 224)
-	(pt 648 224)
-)
-(connector
-	(pt 600 352)
-	(pt 616 352)
 )
 (connector
 	(pt 32 376)
@@ -410,32 +414,13 @@ applicable agreement for further details.
 	(pt 96 360)
 )
 (connector
-	(pt 360 328)
-	(pt 360 368)
-	(bus)
-)
-(connector
 	(pt 328 328)
 	(pt 360 328)
 	(bus)
 )
 (connector
-	(pt 600 368)
-	(pt 648 368)
-)
-(connector
 	(pt 624 448)
 	(pt 624 384)
-	(bus)
-)
-(connector
-	(pt 600 384)
-	(pt 624 384)
-	(bus)
-)
-(connector
-	(pt 624 384)
-	(pt 648 384)
 	(bus)
 )
 (connector
@@ -443,7 +428,146 @@ applicable agreement for further details.
 	(pt 640 448)
 	(bus)
 )
+(connector
+	(pt 720 224)
+	(pt 720 352)
+)
+(connector
+	(pt 880 352)
+	(pt 872 352)
+)
+(connector
+	(pt 376 224)
+	(pt 720 224)
+)
+(connector
+	(pt 600 384)
+	(pt 624 384)
+	(bus)
+)
+(connector
+	(pt 600 368)
+	(pt 720 368)
+)
+(connector
+	(pt 624 384)
+	(pt 720 384)
+	(bus)
+)
+(connector
+	(pt 360 472)
+	(pt 968 472)
+)
+(connector
+	(pt 968 472)
+	(pt 968 368)
+)
+(connector
+	(pt 872 368)
+	(pt 968 368)
+)
+(connector
+	(pt 360 328)
+	(pt 360 96)
+	(bus)
+)
+(connector
+	(pt 360 96)
+	(pt 408 96)
+	(bus)
+)
+(connector
+	(pt 344 344)
+	(pt 344 112)
+)
+(connector
+	(pt 344 112)
+	(pt 408 112)
+)
+(connector
+	(pt 408 80)
+	(pt 304 80)
+)
+(connector
+	(pt 304 224)
+	(pt 304 80)
+)
+(connector
+	(pt 72 224)
+	(pt 304 224)
+)
+(connector
+	(pt 304 224)
+	(pt 376 224)
+)
+(connector
+	(pt 408 128)
+	(pt 400 128)
+)
+(connector
+	(pt 400 128)
+	(pt 400 256)
+)
+(connector
+	(pt 400 256)
+	(pt 56 256)
+)
+(connector
+	(pt 640 112)
+	(pt 640 448)
+)
+(connector
+	(pt 640 448)
+	(pt 640 528)
+)
+(connector
+	(pt 344 384)
+	(pt 344 528)
+)
+(connector
+	(pt 344 528)
+	(pt 640 528)
+)
+(connector
+	(pt 640 96)
+	(pt 656 96)
+	(bus)
+)
+(connector
+	(pt 656 96)
+	(pt 656 592)
+	(bus)
+)
+(connector
+	(pt 656 592)
+	(pt 288 592)
+	(bus)
+)
+(connector
+	(pt 288 368)
+	(pt 384 368)
+	(bus)
+)
+(connector
+	(pt 288 368)
+	(pt 288 592)
+	(bus)
+)
+(connector
+	(pt 640 80)
+	(pt 680 80)
+)
+(connector
+	(pt 680 80)
+	(pt 680 352)
+)
+(connector
+	(pt 680 352)
+	(pt 600 352)
+)
 (junction (pt -112 224))
 (junction (pt 376 224))
 (junction (pt 72 224))
 (junction (pt 624 384))
+(junction (pt 304 224))
+(junction (pt 640 448))

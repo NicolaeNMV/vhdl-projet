@@ -1,32 +1,31 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int isqrt(n)
-register int n;
-{
-    register int a,b,c,as,bs;
+short racine_inf, racine_sup;
+void isqrt(short num) {
+    short op = num;
+    short res = 0;
+    short one = 1 << 14; // pour le vhdl, sur 24 bits => 22 bits 
+    short tmp;
 
-    a = 1;
-    b = 1;
-    while (a<=n) {
-        a = a << 2;
-        b = b << 1;
-    }
-    as = 0;
-    bs = 0;
-    while ( (b>1) && (n>0) ) {
-        a = a>>2;
-        b = b>>1;
-        c = n - (as|a);
-        if ( c>=0 ) {
-            n = c;
-            as |= (a<<1);
-            bs |= b;
+    while (one > op)
+        one >>= 2;
+
+    while (one != 0) {
+        tmp = res + one;
+        if (op >= tmp) {
+            op -= tmp;
+           res = (res>>1) + one; 
         }
-        as = as>>1;
+        else
+          res >>= 1;
+        one >>= 2;
     }
-
-    return(bs);
+    racine_inf = res;
+    if(num == res*res)
+      racine_sup = res;
+    else
+      racine_sup = res+1;
 }
 
 int main(int argc, char** argv) {
@@ -35,6 +34,7 @@ int main(int argc, char** argv) {
     return 1;
   }
   int n = atoi(argv[1]);
-  printf("isqrt(%d)=%d\n", n, isqrt(n));
+  isqrt(n);
+  printf("%d<isqrt(%d)<%d\n", racine_inf, n, racine_sup);
   return 0;
 }

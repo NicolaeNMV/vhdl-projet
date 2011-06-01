@@ -20,26 +20,6 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
-Schema
-# storage
-db|projet_VHDL.(0).cnf
-db|projet_VHDL.(0).cnf
-# case_insensitive
-# source_file
-Schema.bdf
-a0b0f048c24cf08bfb87acb07571c55f
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 rs232out
 # storage
 db|projet_VHDL.(1).cnf
@@ -73,9 +53,6 @@ baud
 PARAMETER_SIGNED_DEC
 USR
 }
-# hierarchies {
-rs232out:inst1
-}
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
@@ -106,9 +83,6 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
-# hierarchies {
-busToRS232:inst2
-}
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
@@ -138,9 +112,6 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
-}
-# hierarchies {
-busFromRS232:inst3
 }
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
@@ -181,9 +152,6 @@ baud
 9600
 PARAMETER_SIGNED_DEC
 USR
-}
-# hierarchies {
-rs232in:inst
 }
 # lmf
 |usr|quartus|lmf|maxplus2.lmf

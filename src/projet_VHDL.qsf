@@ -45,12 +45,6 @@ set_global_assignment -name LAST_QUARTUS_VERSION 10.0
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name BDF_FILE Schema.bdf
-set_global_assignment -name VHDL_FILE rs232out.vhd
-set_global_assignment -name VHDL_FILE rs232in.vhd
-set_global_assignment -name VHDL_FILE busToRS232.vhd
-set_global_assignment -name VHDL_FILE busFromRS232.vhd
-set_global_assignment -name VHDL_FILE adder12.vhd
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name MISC_FILE "/disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/projet_VHDL.dpf"
 set_location_assignment PIN_W25 -to D[0]
@@ -67,6 +61,13 @@ set_location_assignment PIN_E21 -to Tx
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name VHDL_FILE racine.vhd
+set_global_assignment -name BDF_FILE Schema.bdf
+set_global_assignment -name VHDL_FILE rs232out.vhd
+set_global_assignment -name VHDL_FILE rs232in.vhd
+set_global_assignment -name VHDL_FILE busToRS232.vhd
+set_global_assignment -name VHDL_FILE busFromRS232.vhd
+set_global_assignment -name VHDL_FILE adder12.vhd
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,5 +1,5 @@
 Assembler report for projet_VHDL
-Wed Jun  1 10:06:17 2011
+Wed Jun  1 12:45:08 2011
 Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Jun  1 10:06:17 2011 ;
+; Assembler Status      ; Successful - Wed Jun  1 12:45:08 2011 ;
 ; Revision Name         ; projet_VHDL                           ;
 ; Top-level Entity Name ; Schema                                ;
 ; Family                ; Cyclone II                            ;
@@ -117,14 +117,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 10.0 Build 218 06/27/2010 SJ Web Edition
-    Info: Processing started: Wed Jun  1 10:06:10 2011
+    Info: Processing started: Wed Jun  1 12:45:00 2011
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off projet_VHDL -c projet_VHDL
 Info: Writing out detailed assembly data for power analysis
 Info: Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 419 megabytes
-    Info: Processing ended: Wed Jun  1 10:06:17 2011
-    Info: Elapsed time: 00:00:07
+    Info: Processing ended: Wed Jun  1 12:45:08 2011
+    Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:07
 
 

@@ -1,5 +1,5 @@
 Flow report for projet_VHDL
-Wed Jun  1 10:06:19 2011
+Wed Jun  1 12:50:19 2011
 Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
 
 
@@ -38,23 +38,23 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +------------------------------------+------------------------------------------+
-; Flow Status                        ; Successful - Wed Jun  1 10:06:19 2011    ;
+; Flow Status                        ; Flow Failed - Wed Jun  1 12:50:19 2011   ;
 ; Quartus II 64-Bit Version          ; 10.0 Build 218 06/27/2010 SJ Web Edition ;
 ; Revision Name                      ; projet_VHDL                              ;
 ; Top-level Entity Name              ; Schema                                   ;
 ; Family                             ; Cyclone II                               ;
 ; Device                             ; EP2C70F896C6                             ;
 ; Timing Models                      ; Final                                    ;
-; Met timing requirements            ; Yes                                      ;
-; Total logic elements               ; 182 / 68,416 ( < 1 % )                   ;
-;     Total combinational functions  ; 142 / 68,416 ( < 1 % )                   ;
-;     Dedicated logic registers      ; 142 / 68,416 ( < 1 % )                   ;
-; Total registers                    ; 142                                      ;
-; Total pins                         ; 11 / 622 ( 2 % )                         ;
-; Total virtual pins                 ; 0                                        ;
-; Total memory bits                  ; 0 / 1,152,000 ( 0 % )                    ;
-; Embedded Multiplier 9-bit elements ; 0 / 300 ( 0 % )                          ;
-; Total PLLs                         ; 0 / 4 ( 0 % )                            ;
+; Met timing requirements            ; N/A                                      ;
+; Total logic elements               ; N/A until Partition Merge                ;
+;     Total combinational functions  ; N/A until Partition Merge                ;
+;     Dedicated logic registers      ; N/A until Partition Merge                ;
+; Total registers                    ; N/A until Partition Merge                ;
+; Total pins                         ; N/A until Partition Merge                ;
+; Total virtual pins                 ; N/A until Partition Merge                ;
+; Total memory bits                  ; N/A until Partition Merge                ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                ;
+; Total PLLs                         ; N/A until Partition Merge                ;
 +------------------------------------+------------------------------------------+
 
 
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/01/2011 10:05:40 ;
+; Start date & time ; 06/01/2011 12:50:17 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; projet_VHDL         ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 132226768050.130691554002070                                           ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 132226768050.130692541705095                                           ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                      ; --            ; --          ; --         ;
 ; MISC_FILE                           ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/projet_VHDL.dpf ; --            ; --          ; --         ;
@@ -85,38 +85,29 @@ applicable agreement for further details.
 +-------------------------------------+------------------------------------------------------------------------+---------------+-------------+------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                           ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:03     ; 1.0                     ; --                  ; 00:00:03                           ;
-; Fitter                  ; 00:00:23     ; 1.0                     ; --                  ; 00:00:22                           ;
-; Assembler               ; 00:00:07     ; 1.0                     ; --                  ; 00:00:07                           ;
-; Classic Timing Analyzer ; 00:00:01     ; 1.0                     ; --                  ; 00:00:00                           ;
-; Total                   ; 00:00:34     ; --                      ; --                  ; 00:00:32                           ;
-+-------------------------+--------------+-------------------------+---------------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:02     ; 1.0                     ; --                  ; 00:00:02                           ;
+; Total                ; 00:00:02     ; --                      ; --                  ; 00:00:02                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                                                 ;
-+-------------------------+-------------------------+-------------------------------+------------+----------------+
-; Module Name             ; Machine Hostname        ; OS Name                       ; OS Version ; Processor type ;
-+-------------------------+-------------------------+-------------------------------+------------+----------------+
-; Analysis & Synthesis    ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Fitter                  ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Assembler               ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
-; Classic Timing Analyzer ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
-+-------------------------+-------------------------+-------------------------------+------------+----------------+
++--------------------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                              ;
++----------------------+-------------------------+-------------------------------+------------+----------------+
+; Module Name          ; Machine Hostname        ; OS Name                       ; OS Version ; Processor type ;
++----------------------+-------------------------+-------------------------------+------------+----------------+
+; Analysis & Synthesis ; pc228-21.tnet.ensiie.fr ; Linux pc228-21.tnet.ensiie.fr ; 228        ; x86_64         ;
++----------------------+-------------------------+-------------------------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off projet_VHDL -c projet_VHDL
-quartus_fit --read_settings_files=off --write_settings_files=off projet_VHDL -c projet_VHDL
-quartus_asm --read_settings_files=off --write_settings_files=off projet_VHDL -c projet_VHDL
-quartus_tan --read_settings_files=off --write_settings_files=off projet_VHDL -c projet_VHDL --timing_analysis_only
 
 
 
