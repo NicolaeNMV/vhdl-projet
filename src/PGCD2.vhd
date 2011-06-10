@@ -117,18 +117,18 @@ BEGIN
 				R_B(23 DOWNTO 0) <= busin_data(23 DOWNTO 0);
         end if;
 		  -- INIT Compute
-		  if (CMT_COMPUTE = INIT) then
+		  if (CMD_COMPUTE = INIT_COMPUTE) then
 				a_tmp <= SIGNED(R_A);
 				b_tmp <= SIGNED(R_B);
 				c_tmp <= SIGNED(R_A);
 		  end if;
 		  -- SWAP A et B
-		  if ( CMD_COMPUTE = ST_SWAP_AB ) then
+		  if ( CMD_COMPUTE = SWAP_AB ) then
 				a_tmp <= b_tmp;
 				b_tmp <= c_tmp;
 		  end if;
 		  -- Decrement A from B
-		  if ( CMD_COMPUTE = ST_DECR ) then
+		  if ( CMD_COMPUTE = DECR_B_FROM_A ) then
 				a_tmp <= a_tmp - b_tmp;
 		  end if;
         -- R_Res
@@ -163,7 +163,7 @@ BEGIN
 						
               WHEN ST_READ_B =>
                   IF busin_valid  = '1' and busin_addr = "00011" THEN
-                      state <= ST_COMPUTE;
+                      state <= ST_INIT_COMPUTE;
                   ELSIF busin_valid  = '1' and busin_addr /= "00011" THEN
                       state <= ST_WRITE_COPY;
                   END IF; 
@@ -173,21 +173,21 @@ BEGIN
 							 state <= ST_WRITE_PGCD;
 						END IF;
 						IF b_tmp_bigger_than_a='1' THEN
-							state <= ST_SWAP_AB_BEGIN;
+							state <= ST_SWAP_AB;
 						END IF;
-						IF b_tmp_bigger_than_a='0' and b_tmp_bigger_than_a='0' THEN
-							state <= ST_DECR;
+						IF b_tmp_bigger_than_a='0' THEN
+							state <= ST_DECR_B_FROM_A;
 						END IF;
 				  
-				  WHEN ST_SWAP_AB_BEGIN =>
-						state <= ST_COMPUTE;
-				
-				  WHEN ST_SWAP_AB_DECR =>
+				  WHEN ST_SWAP_AB =>
 						state <= ST_COMPUTE;
 					
 				  WHEN ST_DECR =>
 					   state <= ST_SWAP_AB;
-				
+
+				  WHEN ST_INIT_COMPUTE =>
+						state <= ST_COMPUTE;						
+
 						
               WHEN ST_WRITE_PGCD =>
                   IF busout_eated = '1' THEN
@@ -230,9 +230,9 @@ BEGIN
     WITH state  SELECT CMD_Res <=
          COMPUTE   WHEN   ST_Compute,
          NOOP   WHEN   OTHERS; 
-			
-			
+	
     WITH state  SELECT CMD_COMPUTE <=
+			INIT_COMPUTE WHEN	ST_INIT_COMPUTE,
          SWAP_AB   WHEN   ST_SWAP_AB,
 			DECR_B_FROM_A WHEN ST_DECR_B_FROM_A
          NOOP   WHEN   OTHERS; 

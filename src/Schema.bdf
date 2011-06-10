@@ -72,7 +72,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 640 440 816 456)
+	(rect 712 440 888 456)
 	(text "OUTPUT" (rect 1 0 38 10)(font "Arial" (font_size 6)))
 	(text "D[7..0]" (rect 90 0 125 11)(font "Arial" ))
 	(pt 0 8)
@@ -85,7 +85,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 696 512 752 520))
+	(annotation_block (location)(rect 768 512 824 520))
 )
 (symbol
 	(rect -112 328 32 424)
@@ -419,16 +419,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 624 448)
-	(pt 624 384)
-	(bus)
-)
-(connector
-	(pt 624 448)
-	(pt 640 448)
-	(bus)
-)
-(connector
 	(pt 720 224)
 	(pt 720 352)
 )
@@ -441,18 +431,8 @@ applicable agreement for further details.
 	(pt 720 224)
 )
 (connector
-	(pt 600 384)
-	(pt 624 384)
-	(bus)
-)
-(connector
 	(pt 600 368)
 	(pt 720 368)
-)
-(connector
-	(pt 624 384)
-	(pt 720 384)
-	(bus)
 )
 (connector
 	(pt 360 472)
@@ -505,22 +485,6 @@ applicable agreement for further details.
 	(pt 400 128)
 )
 (connector
-	(pt 400 128)
-	(pt 400 256)
-)
-(connector
-	(pt 400 256)
-	(pt 56 256)
-)
-(connector
-	(pt 640 112)
-	(pt 640 448)
-)
-(connector
-	(pt 640 448)
-	(pt 640 528)
-)
-(connector
 	(pt 344 384)
 	(pt 344 528)
 )
@@ -558,16 +522,59 @@ applicable agreement for further details.
 	(pt 680 80)
 )
 (connector
-	(pt 680 80)
-	(pt 680 352)
+	(pt 360 472)
+	(pt 360 400)
 )
 (connector
-	(pt 680 352)
+	(pt 640 112)
+	(pt 640 528)
+)
+(connector
+	(pt 680 384)
+	(pt 680 448)
+	(bus)
+)
+(connector
+	(pt 600 384)
+	(pt 680 384)
+	(bus)
+)
+(connector
+	(pt 680 384)
+	(pt 720 384)
+	(bus)
+)
+(connector
+	(pt 680 448)
+	(pt 712 448)
+	(bus)
+)
+(connector
+	(pt 616 352)
 	(pt 600 352)
+)
+(connector
+	(pt 616 192)
+	(pt 616 352)
+)
+(connector
+	(pt 616 192)
+	(pt 400 192)
+)
+(connector
+	(pt 400 128)
+	(pt 400 192)
+)
+(connector
+	(pt 680 80)
+	(pt 680 256)
+)
+(connector
+	(pt 56 256)
+	(pt 680 256)
 )
 (junction (pt -112 224))
 (junction (pt 376 224))
 (junction (pt 72 224))
-(junction (pt 624 384))
 (junction (pt 304 224))
-(junction (pt 640 448))
+(junction (pt 680 384))

@@ -16,6 +16,17 @@ state.ST_SHIFT_DATA 0 0 1 1
 state.ST_WAIT_BUS 0 1 0 1 
 state.ST_EndLoop 1 0 0 1 
 
+State Machine - |Schema|racine:inst4|state
+Name state.ONE_DECALE state.ELSE_OP_INF_TMP state.IF_OP_SUP_TMP state.LOOP_MAIN state.LOOP_DECALE_ONE state.ST_WRITE_RES state.ST_WRITE_COPY state.ST_READ 
+state.ST_READ 0 0 0 0 0 0 0 0 
+state.ST_WRITE_COPY 0 0 0 0 0 0 1 1 
+state.ST_WRITE_RES 0 0 0 0 0 1 0 1 
+state.LOOP_DECALE_ONE 0 0 0 0 1 0 0 1 
+state.LOOP_MAIN 0 0 0 1 0 0 0 1 
+state.IF_OP_SUP_TMP 0 0 1 0 0 0 0 1 
+state.ELSE_OP_INF_TMP 0 1 0 0 0 0 0 1 
+state.ONE_DECALE 1 0 0 0 0 0 0 1 
+
 State Machine - |Schema|busToRS232:inst2|state
 Name state.SHIFT state.W_RS232OUT state.LOOP_WRITE state.W_ND 
 state.W_ND 0 0 0 0 

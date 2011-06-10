@@ -74,7 +74,7 @@ ARCHITECTURE Montage OF racine IS
     SIGNAL R_Status   :  STD_LOGIC_VECTOR ( 2 DOWNTO 0);
 
     -- le resulat 
-    SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (12 DOWNTO 0);
+    SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (11 DOWNTO 0);
 
     TYPE T_CMD_res IS (INIT, SHIFT_RIGHT, ADD_ONE, NOOP);
     SIGNAL CMD_res : T_CMD_res;
@@ -117,8 +117,8 @@ BEGIN
 --  Partie Opérative
 -------------------------------------------------------------------------------
     tmp <= res + one;
-    racine_inf <= std_logic_vector(res);
-    racine_sup <= std_logic_vector(res+1);
+    racine_inf <= std_logic_vector(res)(11 DOWNTO 0);
+    racine_sup <= std_logic_vector(res+1)(11 DOWNTO 0);
 
     one_gt_op <= '1' when one>UNSIGNED(op) else '0';
     one_not_null <= '1' when one/=0 else '0';

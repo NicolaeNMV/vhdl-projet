@@ -53,6 +53,9 @@ baud
 PARAMETER_SIGNED_DEC
 USR
 }
+# hierarchies {
+rs232out:inst1
+}
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
@@ -83,6 +86,9 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
+# hierarchies {
+busToRS232:inst2
+}
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
@@ -112,6 +118,9 @@ AUTO_RAM_RECOGNITION
 ON
 AUTO_ROM_RECOGNITION
 ON
+}
+# hierarchies {
+busFromRS232:inst3
 }
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
@@ -152,6 +161,62 @@ baud
 9600
 PARAMETER_SIGNED_DEC
 USR
+}
+# hierarchies {
+rs232in:inst
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+Schema
+# storage
+db|projet_VHDL.(0).cnf
+db|projet_VHDL.(0).cnf
+# case_insensitive
+# source_file
+Schema.bdf
+2b6d128ba9ca276e94519c91bf185
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+racine
+# storage
+db|projet_VHDL.(5).cnf
+db|projet_VHDL.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+racine.vhd
+5e9ccfaea88f50544befe822989013d7
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+racine:inst4
 }
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
