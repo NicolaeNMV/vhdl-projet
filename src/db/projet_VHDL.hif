@@ -98,8 +98,8 @@ busToRS232:inst2
 # entity
 busFromRS232
 # storage
-db|projet_VHDL.(3).cnf
-db|projet_VHDL.(3).cnf
+db|projet_VHDL.(4).cnf
+db|projet_VHDL.(4).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -131,8 +131,8 @@ busFromRS232:inst3
 # entity
 rs232in
 # storage
-db|projet_VHDL.(4).cnf
-db|projet_VHDL.(4).cnf
+db|projet_VHDL.(5).cnf
+db|projet_VHDL.(5).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -172,30 +172,10 @@ rs232in:inst
 
 # end
 # entity
-Schema
-# storage
-db|projet_VHDL.(0).cnf
-db|projet_VHDL.(0).cnf
-# case_insensitive
-# source_file
-Schema.bdf
-2b6d128ba9ca276e94519c91bf185
-26
-# internal_option {
-BLOCK_DESIGN_NAMING
-AUTO
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
 racine
 # storage
-db|projet_VHDL.(5).cnf
-db|projet_VHDL.(5).cnf
+db|projet_VHDL.(3).cnf
+db|projet_VHDL.(3).cnf
 # logic_option {
 AUTO_RAM_RECOGNITION
 ON
@@ -203,7 +183,37 @@ ON
 # case_insensitive
 # source_file
 racine.vhd
-5e9ccfaea88f50544befe822989013d7
+4a3a9ef412162b3bde5457286f706e61
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+PGCD
+# storage
+db|projet_VHDL.(6).cnf
+db|projet_VHDL.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+PGCD.vhd
+cc13eb7895b74d511a1792cb30d6b738
 5
 # internal_option {
 HDL_INITIAL_FANOUT_LIMIT
@@ -216,11 +226,61 @@ AUTO_ROM_RECOGNITION
 ON
 }
 # hierarchies {
-racine:inst4
+PGCD:inst4
 }
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+adder12
+# storage
+db|projet_VHDL.(7).cnf
+db|projet_VHDL.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+adder12.vhd
+c0b1b77333ceaddf8689fc51d23cd11
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+Schema
+# storage
+db|projet_VHDL.(0).cnf
+db|projet_VHDL.(0).cnf
+# case_insensitive
+# source_file
+Schema.bdf
+effdf0e6b5d37fa9f17b1e460269e80
+26
+# internal_option {
+BLOCK_DESIGN_NAMING
+AUTO
+}
+# hierarchies {
+|
+}
 # macro_sequence
 
 # end

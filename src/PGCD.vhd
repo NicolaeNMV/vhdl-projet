@@ -120,7 +120,6 @@ BEGIN
 		  if (CMD_COMPUTE = INIT_COMPUTE) then
 				a_tmp <= SIGNED(R_A);
 				b_tmp <= SIGNED(R_B);
-				c_tmp <= SIGNED(R_A);
 		  end if;
 		  -- SWAP A et B
 		  if ( CMD_COMPUTE = SWAP_AB ) then

@@ -162,9 +162,8 @@ BEGIN
     busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '1';
     --TODO busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else ov_tmp;
     --TODO busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else z_tmp;
-    busout_data(23 DOWNTO 12) <= racine_sup when state=ST_WRITE_COPY else "000000000000" ;
-    busout_data(11 DOWNTO  0) <= racine_inf when state=ST_WRITE_COPY else
-    "000000000000";
+    busout_data(23 DOWNTO 12) <= busout_data(23 DOWNTO 12) when state=ST_WRITE_COPY else racine_sup;
+    busout_data(11 DOWNTO  0) <= busout_data(11 DOWNTO  0) when state=ST_WRITE_COPY else racine_inf;
 
 -------------------------------------------------------------------------------
 -- Partie Controle

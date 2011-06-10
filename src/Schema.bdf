@@ -85,7 +85,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
-	(annotation_block (location)(rect 768 512 824 520))
+	(annotation_block (location)(rect 712 488 800 504))
 )
 (symbol
 	(rect -112 328 32 424)
@@ -296,8 +296,8 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 408 48 640 176)
-	(text "racine" (rect 5 0 33 11)(font "Arial" ))
+	(rect 400 48 632 176)
+	(text "PGCD" (rect 5 0 32 11)(font "Arial" ))
 	(text "inst4" (rect 8 112 31 123)(font "Arial" ))
 	(port
 		(pt 0 32)
@@ -414,11 +414,6 @@ applicable agreement for further details.
 	(pt 96 360)
 )
 (connector
-	(pt 328 328)
-	(pt 360 328)
-	(bus)
-)
-(connector
 	(pt 720 224)
 	(pt 720 352)
 )
@@ -447,60 +442,8 @@ applicable agreement for further details.
 	(pt 968 368)
 )
 (connector
-	(pt 360 328)
-	(pt 360 96)
-	(bus)
-)
-(connector
-	(pt 360 96)
-	(pt 408 96)
-	(bus)
-)
-(connector
-	(pt 344 344)
-	(pt 344 112)
-)
-(connector
-	(pt 344 112)
-	(pt 408 112)
-)
-(connector
-	(pt 408 80)
-	(pt 304 80)
-)
-(connector
-	(pt 304 224)
-	(pt 304 80)
-)
-(connector
-	(pt 72 224)
-	(pt 304 224)
-)
-(connector
-	(pt 304 224)
-	(pt 376 224)
-)
-(connector
-	(pt 408 128)
-	(pt 400 128)
-)
-(connector
 	(pt 344 384)
 	(pt 344 528)
-)
-(connector
-	(pt 344 528)
-	(pt 640 528)
-)
-(connector
-	(pt 640 96)
-	(pt 656 96)
-	(bus)
-)
-(connector
-	(pt 656 96)
-	(pt 656 592)
-	(bus)
 )
 (connector
 	(pt 656 592)
@@ -518,36 +461,8 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 640 80)
-	(pt 680 80)
-)
-(connector
 	(pt 360 472)
 	(pt 360 400)
-)
-(connector
-	(pt 640 112)
-	(pt 640 528)
-)
-(connector
-	(pt 680 384)
-	(pt 680 448)
-	(bus)
-)
-(connector
-	(pt 600 384)
-	(pt 680 384)
-	(bus)
-)
-(connector
-	(pt 680 384)
-	(pt 720 384)
-	(bus)
-)
-(connector
-	(pt 680 448)
-	(pt 712 448)
-	(bus)
 )
 (connector
 	(pt 616 352)
@@ -558,23 +473,112 @@ applicable agreement for further details.
 	(pt 616 352)
 )
 (connector
-	(pt 616 192)
-	(pt 400 192)
+	(pt 56 256)
+	(pt 680 256)
 )
 (connector
+	(pt 328 328)
+	(pt 360 328)
+	(bus)
+)
+(connector
+	(pt 712 448)
+	(pt 688 448)
+	(bus)
+)
+(connector
+	(pt 688 448)
+	(pt 688 384)
+	(bus)
+)
+(connector
+	(pt 600 384)
+	(pt 688 384)
+	(bus)
+)
+(connector
+	(pt 688 384)
+	(pt 720 384)
+	(bus)
+)
+(connector
+	(pt 360 328)
+	(pt 360 96)
+	(bus)
+)
+(connector
+	(pt 344 344)
+	(pt 344 112)
+)
+(connector
+	(pt 304 224)
+	(pt 304 80)
+)
+(connector
+	(pt 656 592)
+	(pt 656 96)
+	(bus)
+)
+(connector
+	(pt 680 256)
+	(pt 680 80)
+)
+(connector
+	(pt 72 224)
+	(pt 304 224)
+)
+(connector
+	(pt 304 224)
+	(pt 376 224)
+)
+(connector
+	(pt 344 528)
+	(pt 640 528)
+)
+(connector
+	(pt 640 112)
+	(pt 640 528)
+)
+(connector
+	(pt 392 192)
+	(pt 616 192)
+)
+(connector
+	(pt 392 128)
+	(pt 392 192)
+)
+(connector
+	(pt 392 128)
 	(pt 400 128)
-	(pt 400 192)
+)
+(connector
+	(pt 400 80)
+	(pt 304 80)
+)
+(connector
+	(pt 344 112)
+	(pt 400 112)
+)
+(connector
+	(pt 360 96)
+	(pt 400 96)
+	(bus)
+)
+(connector
+	(pt 632 96)
+	(pt 656 96)
+	(bus)
 )
 (connector
 	(pt 680 80)
-	(pt 680 256)
+	(pt 632 80)
 )
 (connector
-	(pt 56 256)
-	(pt 680 256)
+	(pt 640 112)
+	(pt 632 112)
 )
 (junction (pt -112 224))
 (junction (pt 376 224))
 (junction (pt 72 224))
 (junction (pt 304 224))
-(junction (pt 680 384))
+(junction (pt 688 384))

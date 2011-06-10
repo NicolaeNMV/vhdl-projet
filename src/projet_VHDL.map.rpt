@@ -1,5 +1,5 @@
 Analysis & Synthesis report for projet_VHDL
-Fri Jun 10 15:36:35 2011
+Fri Jun 10 17:39:54 2011
 Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
 
 
@@ -15,15 +15,16 @@ Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |Schema|rs232in:inst|state
   9. State Machine - |Schema|busFromRS232:inst3|state
- 10. State Machine - |Schema|racine:inst4|state
+ 10. State Machine - |Schema|PGCD:inst4|state
  11. State Machine - |Schema|busToRS232:inst2|state
  12. State Machine - |Schema|rs232out:inst1|state
  13. Registers Removed During Synthesis
- 14. General Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Parameter Settings for User Entity Instance: rs232out:inst1
- 17. Parameter Settings for User Entity Instance: rs232in:inst
- 18. Analysis & Synthesis Messages
+ 14. Removed Registers Triggering Further Register Optimizations
+ 15. General Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Parameter Settings for User Entity Instance: rs232out:inst1
+ 18. Parameter Settings for User Entity Instance: rs232in:inst
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -49,15 +50,15 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 10 15:36:35 2011    ;
+; Analysis & Synthesis Status        ; Successful - Fri Jun 10 17:39:54 2011    ;
 ; Quartus II 64-Bit Version          ; 10.0 Build 218 06/27/2010 SJ Web Edition ;
 ; Revision Name                      ; projet_VHDL                              ;
 ; Top-level Entity Name              ; Schema                                   ;
 ; Family                             ; Cyclone II                               ;
-; Total logic elements               ; 337                                      ;
-;     Total combinational functions  ; 294                                      ;
-;     Dedicated logic registers      ; 207                                      ;
-; Total registers                    ; 207                                      ;
+; Total logic elements               ; 375                                      ;
+;     Total combinational functions  ; 254                                      ;
+;     Dedicated logic registers      ; 277                                      ;
+; Total registers                    ; 277                                      ;
 ; Total pins                         ; 11                                       ;
 ; Total virtual pins                 ; 0                                        ;
 ; Total memory bits                  ; 0                                        ;
@@ -158,18 +159,18 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                             ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                             ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------+
-; racine.vhd                       ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/racine.vhd       ;
-; Schema.bdf                       ; yes             ; User Block Diagram/Schematic File  ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/Schema.bdf       ;
-; rs232out.vhd                     ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/rs232out.vhd     ;
-; rs232in.vhd                      ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/rs232in.vhd      ;
-; busToRS232.vhd                   ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/busToRS232.vhd   ;
-; busFromRS232.vhd                 ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/busFromRS232.vhd ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
+; PGCD.vhd                         ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/PGCD.vhd         ;
+; Schema.bdf                       ; yes             ; User Block Diagram/Schematic File  ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/Schema.bdf       ;
+; rs232out.vhd                     ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/rs232out.vhd     ;
+; rs232in.vhd                      ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/rs232in.vhd      ;
+; busToRS232.vhd                   ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/busToRS232.vhd   ;
+; busFromRS232.vhd                 ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/busFromRS232.vhd ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -177,27 +178,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 337   ;
+; Estimated Total logic elements              ; 375   ;
 ;                                             ;       ;
-; Total combinational functions               ; 294   ;
+; Total combinational functions               ; 254   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 74    ;
-;     -- 3 input functions                    ; 125   ;
-;     -- <=2 input functions                  ; 95    ;
+;     -- 4 input functions                    ; 47    ;
+;     -- 3 input functions                    ; 128   ;
+;     -- <=2 input functions                  ; 79    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 186   ;
-;     -- arithmetic mode                      ; 108   ;
+;     -- normal mode                          ; 180   ;
+;     -- arithmetic mode                      ; 74    ;
 ;                                             ;       ;
-; Total registers                             ; 207   ;
-;     -- Dedicated logic registers            ; 207   ;
+; Total registers                             ; 277   ;
+;     -- Dedicated logic registers            ; 277   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 11    ;
 ; Maximum fan-out node                        ; CLK   ;
-; Maximum fan-out                             ; 207   ;
-; Total fan-out                               ; 1561  ;
-; Average fan-out                             ; 3.05  ;
+; Maximum fan-out                             ; 277   ;
+; Total fan-out                               ; 1629  ;
+; Average fan-out                             ; 3.01  ;
 +---------------------------------------------+-------+
 
 
@@ -206,11 +207,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; |Schema                    ; 294 (1)           ; 207 (0)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 11   ; 0            ; |Schema                    ;              ;
-;    |busFromRS232:inst3|    ; 11 (11)           ; 36 (36)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busFromRS232:inst3 ;              ;
-;    |busToRS232:inst2|      ; 39 (39)           ; 40 (40)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busToRS232:inst2   ;              ;
-;    |racine:inst4|          ; 157 (157)         ; 68 (68)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|racine:inst4       ;              ;
-;    |rs232in:inst|          ; 49 (49)           ; 33 (33)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232in:inst       ;              ;
+; |Schema                    ; 254 (1)           ; 277 (0)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 11   ; 0            ; |Schema                    ;              ;
+;    |PGCD:inst4|            ; 111 (111)         ; 135 (135)    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|PGCD:inst4         ;              ;
+;    |busFromRS232:inst3|    ; 11 (11)           ; 39 (39)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busFromRS232:inst3 ;              ;
+;    |busToRS232:inst2|      ; 43 (43)           ; 40 (40)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busToRS232:inst2   ;              ;
+;    |rs232in:inst|          ; 51 (51)           ; 33 (33)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232in:inst       ;              ;
 ;    |rs232out:inst1|        ; 37 (37)           ; 30 (30)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232out:inst1     ;              ;
 +----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -247,19 +248,19 @@ Encoding Type:  One-Hot
 
 Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Schema|racine:inst4|state                                                                                                                                                  ;
-+-----------------------+------------------+-----------------------+---------------------+-----------------+-----------------------+--------------------+---------------------+---------------+
-; Name                  ; state.ONE_DECALE ; state.ELSE_OP_INF_TMP ; state.IF_OP_SUP_TMP ; state.LOOP_MAIN ; state.LOOP_DECALE_ONE ; state.ST_WRITE_RES ; state.ST_WRITE_COPY ; state.ST_READ ;
-+-----------------------+------------------+-----------------------+---------------------+-----------------+-----------------------+--------------------+---------------------+---------------+
-; state.ST_READ         ; 0                ; 0                     ; 0                   ; 0               ; 0                     ; 0                  ; 0                   ; 0             ;
-; state.ST_WRITE_COPY   ; 0                ; 0                     ; 0                   ; 0               ; 0                     ; 0                  ; 1                   ; 1             ;
-; state.ST_WRITE_RES    ; 0                ; 0                     ; 0                   ; 0               ; 0                     ; 1                  ; 0                   ; 1             ;
-; state.LOOP_DECALE_ONE ; 0                ; 0                     ; 0                   ; 0               ; 1                     ; 0                  ; 0                   ; 1             ;
-; state.LOOP_MAIN       ; 0                ; 0                     ; 0                   ; 1               ; 0                     ; 0                  ; 0                   ; 1             ;
-; state.IF_OP_SUP_TMP   ; 0                ; 0                     ; 1                   ; 0               ; 0                     ; 0                  ; 0                   ; 1             ;
-; state.ELSE_OP_INF_TMP ; 0                ; 1                     ; 0                   ; 0               ; 0                     ; 0                  ; 0                   ; 1             ;
-; state.ONE_DECALE      ; 1                ; 0                     ; 0                   ; 0               ; 0                     ; 0                  ; 0                   ; 1             ;
-+-----------------------+------------------+-----------------------+---------------------+-----------------+-----------------------+--------------------+---------------------+---------------+
+; State Machine - |Schema|PGCD:inst4|state                                                                                                                                                    ;
++------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
+; Name                   ; state.ST_INIT_COMPUTE ; state.ST_WRITE_PGCD ; state.ST_WRITE_COPY ; state.ST_DECR_B_FROM_A ; state.ST_SWAP_AB ; state.ST_COMPUTE ; state.ST_READ_B ; state.ST_READ ;
++------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
+; state.ST_READ          ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0             ;
+; state.ST_READ_B        ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 1               ; 1             ;
+; state.ST_COMPUTE       ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 1                ; 0               ; 1             ;
+; state.ST_SWAP_AB       ; 0                     ; 0                   ; 0                   ; 0                      ; 1                ; 0                ; 0               ; 1             ;
+; state.ST_DECR_B_FROM_A ; 0                     ; 0                   ; 0                   ; 1                      ; 0                ; 0                ; 0               ; 1             ;
+; state.ST_WRITE_COPY    ; 0                     ; 0                   ; 1                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
+; state.ST_WRITE_PGCD    ; 0                     ; 1                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
+; state.ST_INIT_COMPUTE  ; 1                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
++------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
 
 
 Encoding Type:  One-Hot
@@ -288,15 +289,30 @@ Encoding Type:  One-Hot
 +-------------+-------------+-----------+-------------+------------+
 
 
-+-------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                        ;
-+--------------------------------------------------+----------------------------------------+
-; Register name                                    ; Reason for Removal                     ;
-+--------------------------------------------------+----------------------------------------+
-; racine:inst4|one[1,3,5,7,9,11,13,15,17,19,21,23] ; Stuck at GND due to stuck port data_in ;
-; rs232out:inst1|R_data[9]                         ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 13           ;                                        ;
-+--------------------------------------------------+----------------------------------------+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; rs232out:inst1|R_data[9]               ; Stuck at VCC due to stuck port data_in      ;
+; PGCD:inst4|state.ST_WRITE_PGCD         ; Stuck at GND due to stuck port data_in      ;
+; PGCD:inst4|R_Res[0..23]                ; Stuck at GND due to stuck port clock_enable ;
+; Total Number of Removed Registers = 26 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                          ;
++--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
+; Register name                  ; Reason for Removal        ; Registers Removed due to This Register                                                  ;
++--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
+; PGCD:inst4|state.ST_WRITE_PGCD ; Stuck at GND              ; PGCD:inst4|R_Res[22], PGCD:inst4|R_Res[21], PGCD:inst4|R_Res[20], PGCD:inst4|R_Res[19], ;
+;                                ; due to stuck port data_in ; PGCD:inst4|R_Res[18], PGCD:inst4|R_Res[17], PGCD:inst4|R_Res[16], PGCD:inst4|R_Res[15], ;
+;                                ;                           ; PGCD:inst4|R_Res[14], PGCD:inst4|R_Res[13], PGCD:inst4|R_Res[12], PGCD:inst4|R_Res[11], ;
+;                                ;                           ; PGCD:inst4|R_Res[10], PGCD:inst4|R_Res[9], PGCD:inst4|R_Res[8], PGCD:inst4|R_Res[7],    ;
+;                                ;                           ; PGCD:inst4|R_Res[6], PGCD:inst4|R_Res[5], PGCD:inst4|R_Res[4], PGCD:inst4|R_Res[3],     ;
+;                                ;                           ; PGCD:inst4|R_Res[2], PGCD:inst4|R_Res[1], PGCD:inst4|R_Res[0], PGCD:inst4|R_Res[23]     ;
++--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -304,12 +320,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 207   ;
-; Number of registers using Synchronous Clear  ; 42    ;
-; Number of registers using Synchronous Load   ; 50    ;
+; Total registers                              ; 277   ;
+; Number of registers using Synchronous Clear  ; 14    ;
+; Number of registers using Synchronous Load   ; 56    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 147   ;
+; Number of registers using Clock Enable       ; 220   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -320,18 +336,21 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Schema|busFromRS232:inst3|R_i[2]    ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Schema|racine:inst4|op[1]           ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_i[3]      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Schema|rs232out:inst1|R_data[4]     ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |Schema|rs232in:inst|R_baud[9]       ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Schema|racine:inst4|one[0]          ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 46 LEs               ; 0 LEs                  ; Yes        ; |Schema|racine:inst4|res[17]         ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[6]     ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[9]     ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Schema|PGCD:inst4|R_INPUT[6]        ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Schema|PGCD:inst4|b_tmp[12]         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_i[3]      ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[27]    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Schema|rs232out:inst1|R_data[3]     ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |Schema|rs232in:inst|R_baud[11]      ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |Schema|PGCD:inst4|a_tmp[20]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[3]     ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[24]    ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[22]    ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Schema|busToRS232:inst2|state       ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Schema|busFromRS232:inst3|Selector1 ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Schema|racine:inst4|Selector2       ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Schema|busFromRS232:inst3|Selector3 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Schema|PGCD:inst4|Selector6         ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Schema|busToRS232:inst2|Selector1   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |Schema|PGCD:inst4|Selector1         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 
 
@@ -363,8 +382,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 10.0 Build 218 06/27/2010 SJ Web Edition
-    Info: Processing started: Fri Jun 10 15:36:30 2011
+    Info: Processing started: Fri Jun 10 17:39:49 2011
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projet_VHDL -c projet_VHDL
+Info: Found 2 design units, including 1 entities, in source file PGCD.vhd
+    Info: Found design unit 1: PGCD-Montage
+    Info: Found entity 1: PGCD
 Info: Found 2 design units, including 1 entities, in source file racine.vhd
     Info: Found design unit 1: racine-Montage
     Info: Found entity 1: racine
@@ -388,23 +410,18 @@ Info: Found 2 design units, including 1 entities, in source file adder12.vhd
 Info: Elaborating entity "Schema" for the top level hierarchy
 Info: Elaborating entity "rs232out" for hierarchy "rs232out:inst1"
 Info: Elaborating entity "busToRS232" for hierarchy "busToRS232:inst2"
-Info: Elaborating entity "racine" for hierarchy "racine:inst4"
-Warning (10036): Verilog HDL or VHDL warning at racine.vhd(71): object "CMD_Addr" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at racine.vhd(72): object "CMD_Status" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at racine.vhd(73): used implicit default value for signal "R_Addr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at racine.vhd(74): used implicit default value for signal "R_Status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at racine.vhd(95): object "busin_status" assigned a value but never read
-Warning (10873): Using initial value X (don't care) for net "busout_status[1..0]" at racine.vhd(98)
+Info: Elaborating entity "PGCD" for hierarchy "PGCD:inst4"
+Warning (10036): Verilog HDL or VHDL warning at PGCD.vhd(60): object "diff_a_b" assigned a value but never read
 Info: Elaborating entity "busFromRS232" for hierarchy "busFromRS232:inst3"
 Info: Elaborating entity "rs232in" for hierarchy "rs232in:inst"
 Info: Generating hard_block partition "hard_block:auto_generated_inst"
-Info: Implemented 348 device resources after synthesis - the final resource count might be different
+Info: Implemented 387 device resources after synthesis - the final resource count might be different
     Info: Implemented 2 input pins
     Info: Implemented 9 output pins
-    Info: Implemented 337 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 311 megabytes
-    Info: Processing ended: Fri Jun 10 15:36:35 2011
+    Info: Implemented 376 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 312 megabytes
+    Info: Processing ended: Fri Jun 10 17:39:54 2011
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:05
 
