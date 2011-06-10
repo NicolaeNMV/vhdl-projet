@@ -50,7 +50,7 @@ ARCHITECTURE Montage OF PGCD IS
     SIGNAL R_Res   :  STD_LOGIC_VECTOR (23 DOWNTO 0);
 
 	 -- calcul pgcd
-    TYPE T_CMD_COMPUTE IS (NOOP, INIT, SWAP_AB, DECR_B_FROM_A);
+    TYPE T_CMD_COMPUTE IS (NOOP, INIT, SWAP_AB, DECR_B_FROM_A, INIT_COMPUTE);
     SIGNAL CMD_COMPUTE: T_CMD_COMPUTE;
 	 
     -- signaux intermediaires
@@ -76,7 +76,7 @@ ARCHITECTURE Montage OF PGCD IS
 		ST_COMPUTE,  -- the loop for compute
 		ST_SWAP_AB, -- swap AB
 		ST_DECR_B_FROM_A,
-		ST_WRITE_COPY, ST_WRITE_PGCD );
+		ST_WRITE_COPY, ST_WRITE_PGCD, ST_INIT_COMPUTE );
     SIGNAL state : STATE_TYPE;
     
 BEGIN
@@ -96,7 +96,7 @@ BEGIN
 	 b_tmp_is_zero <= '1' WHEN b_tmp = 0 ELSE '0';
 	 -- if (b>a) swap(a,b)
 	 b_tmp_bigger_than_a <= '1' WHEN b_tmp > a_tmp ELSE '0';
-	 diff_a_b = tmp_a - tmp_b;
+	 diff_a_b <= a_tmp - b_tmp;
 	 
 	 c_tmp <= a_tmp;
 	 
@@ -135,12 +135,20 @@ BEGIN
         if    ( CMD_Res = LOAD ) then
             R_Res <= std_logic_vector(a_tmp);
         end if;
+        -- R_Status
+        if    ( CMD_Status = LOAD ) then
+            R_Status <= busin_status;
+        end if;
 		  -- 
     END IF; END PROCESS;
     
     busout_addr      <= R_Addr;
-    busout_status <= busin_status;
-    busout_data(23 DOWNTO 0) <= R_INPUT (11 DOWNTO 1) when state=ST_WRITE_COPY else R_Res ;
+
+	 busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '1';
+	 busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '0';
+    busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else '1';
+	 
+    busout_data(23 DOWNTO 0) <= R_INPUT (23 DOWNTO 0) when state=ST_WRITE_COPY else R_Res (23 DOWNTO 0);
 
 -------------------------------------------------------------------------------
 -- Partie Controle
@@ -182,7 +190,7 @@ BEGIN
 				  WHEN ST_SWAP_AB =>
 						state <= ST_COMPUTE;
 					
-				  WHEN ST_DECR =>
+				  WHEN ST_DECR_B_FROM_A =>
 					   state <= ST_SWAP_AB;
 
 				  WHEN ST_INIT_COMPUTE =>
@@ -229,12 +237,13 @@ BEGIN
 
     WITH state  SELECT CMD_Res <=
          COMPUTE   WHEN   ST_Compute,
+			LOAD WHEN ST_WRITE_PGCD,
          NOOP   WHEN   OTHERS; 
 	
     WITH state  SELECT CMD_COMPUTE <=
 			INIT_COMPUTE WHEN	ST_INIT_COMPUTE,
          SWAP_AB   WHEN   ST_SWAP_AB,
-			DECR_B_FROM_A WHEN ST_DECR_B_FROM_A
+			DECR_B_FROM_A WHEN ST_DECR_B_FROM_A,
          NOOP   WHEN   OTHERS; 
 	
 
