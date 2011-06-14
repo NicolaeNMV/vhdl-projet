@@ -52,7 +52,7 @@ ARCHITECTURE Montage OF racine IS
     -- le resulat 
     SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (11 DOWNTO 0);
 
-    SIGNAL res : UNSIGNED (11 DOWNTO 0);
+    SIGNAL res : UNSIGNED (23 DOWNTO 0);
 	 
     TYPE T_CMD_i IS (INIT, INCR, NOOP);
     SIGNAL CMD_i : T_CMD_i;
@@ -82,7 +82,7 @@ BEGIN
 -------------------------------------------------------------------------------
     racine_inf <= std_logic_vector(res-1)(11 DOWNTO 0);
     racine_sup <= std_logic_vector(res)(11 DOWNTO 0);
-	 res <= UNSIGNED(std_logic_vector(i*i)(11 DOWNTO 0));
+	 res <= i*i;
     endmloop <= '0' when res < UNSIGNED(op)  else '1';
 
     busin_addr          <= busin(31 DOWNTO 27) ;
