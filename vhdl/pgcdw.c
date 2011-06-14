@@ -12,7 +12,7 @@ int main(int argc, char**argv)
     int vt100;
     int i,nb=0;
     unsigned char c=0;
-    unsigned int  code=0;
+    unsigned int  codeA=0,codeB=0;
     int a,b;
 
 	printf("%s %s\n",argv[0],TTY_NAME);
@@ -21,14 +21,24 @@ int main(int argc, char**argv)
 
 	while (1) {
         //c= (nb&0xf) + 'A';
-        printf("entrer en A et B (%d %d) : ", 0xFFFFF800, 0x000007FF);
+        printf("entrer en A et B (%d %d) : ", 0xFF800000, 0x007FFFFF);
         scanf("%d%d",&a,&b);
-        code = (3<<27) | (0<<24) | ((b<<12)&0xFFF000) | ((a<<0)&0xFFF) ;
-        printf("%3dth bus=%08x\n",nb,code);
-	    ttyS_write(vt100,((code)>>24)&0xff);
-	    ttyS_write(vt100,((code)>>16)&0xff);
-	    ttyS_write(vt100,((code)>>8)&0xff);
-	    ttyS_write(vt100,((code)>>0)&0xff);
+        codeA = (3<<27) | (0<<24) | ((a<<0)&0xFFFFFF);
+	codeB = (3<<27) | (0<<24) | ((b<<0)&0xFFFFFF);
+
+        printf("send A: %3dth bus=%08x\n",nb,codeA);
+	    ttyS_write(vt100,((codeA)>>24)&0xff);
+	    ttyS_write(vt100,((codeA)>>16)&0xff);
+	    ttyS_write(vt100,((codeA)>>8)&0xff);
+	    ttyS_write(vt100,((codeA)>>0)&0xff);
+
+       printf("send B: %3dth bus=%08x\n",nb,codeA);
+	    ttyS_write(vt100,((codeB)>>24)&0xff);
+	    ttyS_write(vt100,((codeB)>>16)&0xff);
+	    ttyS_write(vt100,((codeB)>>8)&0xff);
+	    ttyS_write(vt100,((codeB)>>0)&0xff);
+
+
         nb+=1;
     }
     return 0;
