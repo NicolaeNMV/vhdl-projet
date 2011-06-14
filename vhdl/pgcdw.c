@@ -24,7 +24,7 @@ int main(int argc, char**argv)
         printf("entrer en A et B (%d %d) : ", 0xFF800000, 0x007FFFFF);
         scanf("%d%d",&a,&b);
         codeA = (3<<27) | (0<<24) | ((a<<0)&0xFFFFFF);
-	codeB = (3<<27) | (0<<24) | ((b<<0)&0xFFFFFF);
+	codeB = (2<<27) | (0<<24) | ((b<<0)&0xFFFFFF);
 
         printf("send A: %3dth bus=%08x\n",nb,codeA);
 	    ttyS_write(vt100,((codeA)>>24)&0xff);

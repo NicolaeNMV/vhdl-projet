@@ -96,7 +96,7 @@ BEGIN
 	 b_tmp_is_zero <= '1' WHEN b_tmp = 0 ELSE '0';
 	 -- if (b>a) swap(a,b)
 	 b_tmp_bigger_than_a <= '1' WHEN b_tmp > a_tmp ELSE '0';
-	 diff_a_b <= a_tmp - b_tmp;
+	 -- diff_a_b <= a_tmp - b_tmp;
 	 
 	 c_tmp <= a_tmp;
 	 
@@ -121,18 +121,19 @@ BEGIN
 				a_tmp <= SIGNED(R_A);
 				b_tmp <= SIGNED(R_B);
 		  end if;
+		  
 		  -- SWAP A et B
 		  if ( CMD_COMPUTE = SWAP_AB ) then
 				a_tmp <= b_tmp;
 				b_tmp <= c_tmp;
 		  end if;
-		  -- Decrement A from B
+		  -- Decrement A by B
 		  if ( CMD_COMPUTE = DECR_B_FROM_A ) then
 				a_tmp <= a_tmp - b_tmp;
 		  end if;
         -- R_Res
         if    ( CMD_Res = LOAD ) then
-            R_Res <= std_logic_vector(a_tmp);
+            R_Res <= R_A;
         end if;
         -- R_Status
         if    ( CMD_Status = LOAD ) then
@@ -143,9 +144,9 @@ BEGIN
     
     busout_addr      <= R_Addr;
 
-	 busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '1';
-	 busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '0';
-    busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else '1';
+	 busout_status(2) <= '1' when state=ST_WRITE_COPY else '0';
+	 busout_status(1) <= '1' when state=ST_WRITE_COPY else '0';
+    busout_status(0) <= '1' when state=ST_WRITE_COPY else '0';
 	 
     busout_data(23 DOWNTO 0) <= R_INPUT (23 DOWNTO 0) when state=ST_WRITE_COPY else R_Res (23 DOWNTO 0);
 
@@ -163,18 +164,19 @@ BEGIN
           CASE state IS
               WHEN ST_READ =>
                   IF busin_valid  = '1' and busin_addr = "00011" THEN
-                      state <= ST_READ_B;
-                  ELSIF busin_valid  = '1' and busin_addr /= "00011" THEN
-                      state <= ST_WRITE_COPY;
-                  END IF; 
-						
-              WHEN ST_READ_B =>
-                  IF busin_valid  = '1' and busin_addr = "00011" THEN
                       state <= ST_INIT_COMPUTE;
                   ELSIF busin_valid  = '1' and busin_addr /= "00011" THEN
                       state <= ST_WRITE_COPY;
                   END IF; 
 
+              WHEN ST_READ_B =>
+                  IF busin_valid  = '1' and busin_addr = "00010" THEN
+                      state <= ST_INIT_COMPUTE;
+                  END IF; 
+
+				  WHEN ST_INIT_COMPUTE =>
+						state <= ST_COMPUTE;		
+						
 				  WHEN ST_COMPUTE =>
 						IF b_tmp_is_zero ='1' THEN
 							 state <= ST_WRITE_PGCD;
@@ -185,21 +187,20 @@ BEGIN
 						IF b_tmp_bigger_than_a='0' THEN
 							state <= ST_DECR_B_FROM_A;
 						END IF;
-				  
-				  WHEN ST_SWAP_AB =>
-						state <= ST_COMPUTE;
-					
-				  WHEN ST_DECR_B_FROM_A =>
-					   state <= ST_SWAP_AB;
-
-				  WHEN ST_INIT_COMPUTE =>
-						state <= ST_COMPUTE;						
-
-						
+			
               WHEN ST_WRITE_PGCD =>
                   IF busout_eated = '1' THEN
                       state  <= ST_READ;
                   END IF; 
+			
+				  WHEN ST_SWAP_AB =>
+						state <= ST_COMPUTE;
+					
+				  WHEN ST_DECR_B_FROM_A =>
+					   state <= ST_SWAP_AB;				
+
+						
+
 
               WHEN ST_WRITE_COPY =>
                   IF busout_eated = '1' THEN
@@ -212,6 +213,7 @@ BEGIN
     -- fonction de sortie    
     WITH state  SELECT busin_eated <=
          '1'    WHEN   ST_READ,
+         '1'    WHEN   ST_READ_B,
          '0'    WHEN   OTHERS; 
 
     WITH state  SELECT busout_valid <=
