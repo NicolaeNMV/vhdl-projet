@@ -46,12 +46,19 @@ ARCHITECTURE Montage OF racine IS
     SIGNAL R_Addr     :  STD_LOGIC_VECTOR (4 DOWNTO 0);
     SIGNAL R_Status   :  STD_LOGIC_VECTOR ( 2 DOWNTO 0);
 
+
+    SIGNAL endmloop: STD_LOGIC;
+
     -- le resulat 
     SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (11 DOWNTO 0);
 
     TYPE T_CMD_res IS (INIT, NOOP);
     SIGNAL CMD_res : T_CMD_res;
-    SIGNAL res : UNSIGNED (23 DOWNTO 0);
+    SIGNAL res : UNSIGNED (11 DOWNTO 0);
+	 
+    TYPE T_CMD_i IS (INIT, INCR, NOOP);
+    SIGNAL CMD_i : T_CMD_i;
+    SIGNAL i : UNSIGNED (11 DOWNTO 0);
 
     -- les bus in & out
     SIGNAL busin_addr   : STD_LOGIC_VECTOR( 4 DOWNTO 0);
@@ -65,7 +72,7 @@ ARCHITECTURE Montage OF racine IS
     TYPE STATE_TYPE IS (
         ST_READ, -- lire la donnee
         ST_WRITE_COPY, --passer data au suivant (adresse ne me concerne pas)
-        ST_WRITE_RES, -- ecrire le résultat
+        I_TROUVE, -- ecrire le résultat
         MLOOP
     );
     SIGNAL state : STATE_TYPE;
@@ -75,8 +82,10 @@ BEGIN
 -------------------------------------------------------------------------------
 --  Partie OpÃ©rative
 -------------------------------------------------------------------------------
-    racine_inf <= std_logic_vector(res)(11 DOWNTO 0);
-    racine_sup <= std_logic_vector(res+1)(11 DOWNTO 0);
+    racine_inf <= std_logic_vector(res-1)(11 DOWNTO 0);
+    racine_sup <= std_logic_vector(res)(11 DOWNTO 0);
+
+    endmloop <= '0' when res < UNSIGNED(op)  else '1';
 
     busin_addr          <= busin(31 DOWNTO 27) ;
     busin_status        <= busin(26 DOWNTO 24) ;
@@ -87,8 +96,24 @@ BEGIN
     
     PROCESS (clk)
     BEGIN IF clk'EVENT AND clk = '1' THEN
-        -- registre res : INIT, SHIFT_RIGHT, ADD_ONE, NOOP
-        res <= "000000000000000000000000";
+        -- registre res : INIT, NOOP
+        if ( CMD_Res = INIT ) then 
+		  res <= i*i;
+      else
+          res <= res;
+      end if;
+       -- registre i :  INIT, INCR, NOOP
+      if ( CMD_i = INIT ) then
+          i <= "000000000000";
+      elsif (CMD_i = INCR ) then
+          i <= i + 1;
+      else
+          i <= i;
+      end if;
+      -- registre op : pour la donnee
+      if    ( CMD_op = INIT ) then
+           op(23 DOWNTO 0) <= busin_data(23 DOWNTO  0);
+      end if;
     END IF; END PROCESS;
     
     busout_addr      <= R_Addr;
@@ -115,12 +140,14 @@ BEGIN
                       state <= MLOOP;
                   ELSIF busin_valid  = '1' and busin_addr /= "00100" THEN
                       state <= ST_WRITE_COPY;
-                  END IF; 
+                  END IF;
 
               WHEN MLOOP =>
-                  state <= ST_WRITE_RES;
+                  if endmloop='1' then
+                    state <= I_TROUVE;
+                  end if;
 
-              WHEN ST_WRITE_RES =>
+              WHEN I_TROUVE =>
                   IF busout_eated = '1' THEN
                       state  <= ST_READ;
                   END IF; 
@@ -140,7 +167,7 @@ BEGIN
 
     WITH state  SELECT busout_valid <=
         '1'     WHEN   ST_WRITE_COPY,
-        '1'     WHEN   ST_WRITE_RES,
+        '1'     WHEN   I_TROUVE,
         '0'     WHEN   OTHERS; 
 
     WITH state  SELECT CMD_Addr <=
@@ -151,9 +178,21 @@ BEGIN
          LOAD   WHEN   ST_READ,
          NOOP   WHEN   OTHERS; 
 			
-    WITH state  SELECT CMD_res <= -- INIT, SHIFT_RIGHT, ADD_ONE, NOOP
+    WITH state  SELECT CMD_OP <=
         INIT   WHEN   ST_READ,
-        NOOP   WHEN   OTHERS; 
+        NOOP   WHEN   OTHERS;
+    
+   WITH state  SELECT CMD_Res <=
+        INIT   WHEN   I_TROUVE,
+        NOOP   WHEN   OTHERS;
+
+
+        WITH state SELECT CMD_i <=
+        NOOP WHEN I_TROUVE,
+        INCR WHEN MLOOP,
+        INIT WHEN OTHERS;
+
+
 
 END Montage;
 
