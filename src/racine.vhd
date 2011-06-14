@@ -51,8 +51,6 @@ ARCHITECTURE Montage OF racine IS
 
     -- le resulat 
     SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (11 DOWNTO 0);
-
-    SIGNAL res : UNSIGNED (23 DOWNTO 0);
 	 
     TYPE T_CMD_i IS (INIT, INCR, NOOP);
     SIGNAL CMD_i : T_CMD_i;
@@ -80,10 +78,9 @@ BEGIN
 -------------------------------------------------------------------------------
 --  Partie Opérative
 -------------------------------------------------------------------------------
-    racine_inf <= std_logic_vector(i-1)(11 DOWNTO 0);
-    racine_sup <= std_logic_vector(i)(11 DOWNTO 0);
-	 res <= i*i;
-    endmloop <= '0' when res < UNSIGNED(op)  else '1';
+    racine_inf <= std_logic_vector(UNSIGNED(i-1));
+    racine_sup <= std_logic_vector(UNSIGNED(i));
+    endmloop <= '0' when i*i < UNSIGNED(op)  else '1';
 
     busin_addr          <= busin(31 DOWNTO 27) ;
     busin_status        <= busin(26 DOWNTO 24) ;
@@ -118,9 +115,6 @@ BEGIN
 
 -------------------------------------------------------------------------------
 -- Partie Controle
--------------------------------------------------------------------------------
--- Inputs:  busin_valid busout_eated
--- Outputs: busin_eated busout_valid, CMD_AB, CMD_Addr, CMD_Status, CMD_Res
 -------------------------------------------------------------------------------
 
     -- fonction de transitition    
