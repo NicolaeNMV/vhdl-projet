@@ -80,8 +80,8 @@ BEGIN
 -------------------------------------------------------------------------------
 --  Partie Opérative
 -------------------------------------------------------------------------------
-    racine_inf <= std_logic_vector(res-1)(11 DOWNTO 0);
-    racine_sup <= std_logic_vector(res)(11 DOWNTO 0);
+    racine_inf <= std_logic_vector(i-1)(11 DOWNTO 0);
+    racine_sup <= std_logic_vector(i)(11 DOWNTO 0);
 	 res <= i*i;
     endmloop <= '0' when res < UNSIGNED(op)  else '1';
 
