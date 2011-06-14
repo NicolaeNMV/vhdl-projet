@@ -52,8 +52,6 @@ ARCHITECTURE Montage OF racine IS
     -- le resulat 
     SIGNAL racine_sup, racine_inf:  STD_LOGIC_VECTOR (11 DOWNTO 0);
 
-    TYPE T_CMD_res IS (INIT, NOOP);
-    SIGNAL CMD_res : T_CMD_res;
     SIGNAL res : UNSIGNED (11 DOWNTO 0);
 	 
     TYPE T_CMD_i IS (INIT, INCR, NOOP);
@@ -84,7 +82,7 @@ BEGIN
 -------------------------------------------------------------------------------
     racine_inf <= std_logic_vector(res-1)(11 DOWNTO 0);
     racine_sup <= std_logic_vector(res)(11 DOWNTO 0);
-
+	 res <= UNSIGNED(std_logic_vector(i*i)(11 DOWNTO 0));
     endmloop <= '0' when res < UNSIGNED(op)  else '1';
 
     busin_addr          <= busin(31 DOWNTO 27) ;
@@ -96,12 +94,7 @@ BEGIN
     
     PROCESS (clk)
     BEGIN IF clk'EVENT AND clk = '1' THEN
-        -- registre res : INIT, NOOP
-        if ( CMD_Res = INIT ) then 
-		  res <= UNSIGNED(std_logic_vector(i*i)(11 DOWNTO 0));
-      else
-          res <= res;
-      end if;
+
        -- registre i :  INIT, INCR, NOOP
       if ( CMD_i = INIT ) then
           i <= "000000000000";
@@ -180,10 +173,6 @@ BEGIN
 			
     WITH state  SELECT CMD_OP <=
         INIT   WHEN   ST_READ,
-        NOOP   WHEN   OTHERS;
-    
-   WITH state  SELECT CMD_Res <=
-        INIT   WHEN   I_TROUVE,
         NOOP   WHEN   OTHERS;
 
 
