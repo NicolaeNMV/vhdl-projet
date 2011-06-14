@@ -57,8 +57,7 @@ ARCHITECTURE Montage OF PGCD IS
     SIGNAL a_tmp   : SIGNED (23 DOWNTO 0);
     SIGNAL b_tmp   : SIGNED (23 DOWNTO 0);
     SIGNAL c_tmp   : SIGNED (23 DOWNTO 0);
-	 SIGNAL diff_a_b   : SIGNED (23 DOWNTO 0);
-    -- SIGNAL p_tmp   : SIGNED (25 DOWNTO 0); -- for mult
+
     SIGNAL z_tmp   : STD_LOGIC;
 	 SIGNAL b_tmp_is_zero:  STD_LOGIC;
 	 SIGNAL b_tmp_bigger_than_a:  STD_LOGIC;
@@ -71,7 +70,7 @@ ARCHITECTURE Montage OF PGCD IS
     SIGNAL busout_data  : STD_LOGIC_VECTOR(23 DOWNTO 0);
 
     --Description des états
-    TYPE STATE_TYPE IS (ST_READ,
+    TYPE STATE_TYPE IS (ST_READ_A,ST_READ_A_DO,
                         ST_READ_B, 
 		ST_COMPUTE,  -- the loop for compute
 		ST_SWAP_AB, -- swap AB
@@ -96,9 +95,6 @@ BEGIN
 	 b_tmp_is_zero <= '1' WHEN b_tmp = 0 ELSE '0';
 	 -- if (b>a) swap(a,b)
 	 b_tmp_bigger_than_a <= '1' WHEN b_tmp > a_tmp ELSE '0';
-	 -- diff_a_b <= a_tmp - b_tmp;
-	 
-	 c_tmp <= a_tmp;
 	 
     PROCESS (clk)
     BEGIN IF clk'EVENT AND clk = '1' THEN
@@ -121,9 +117,9 @@ BEGIN
 				a_tmp <= SIGNED(R_A);
 				b_tmp <= SIGNED(R_B);
 		  end if;
-		  
 		  -- SWAP A et B
 		  if ( CMD_COMPUTE = SWAP_AB ) then
+			   c_tmp <= a_tmp;
 				a_tmp <= b_tmp;
 				b_tmp <= c_tmp;
 		  end if;
@@ -133,7 +129,7 @@ BEGIN
 		  end if;
         -- R_Res
         if    ( CMD_Res = LOAD ) then
-            R_Res <= R_A;
+            R_Res <= std_logic_vector(a_tmp);
         end if;
         -- R_Status
         if    ( CMD_Status = LOAD ) then
@@ -162,16 +158,21 @@ BEGIN
     BEGIN
       IF clk'EVENT AND clk = '1' THEN
           CASE state IS
-              WHEN ST_READ =>
+              WHEN ST_READ_A =>
                   IF busin_valid  = '1' and busin_addr = "00011" THEN
-                      state <= ST_INIT_COMPUTE;
+                      state <= ST_READ_A_DO;
                   ELSIF busin_valid  = '1' and busin_addr /= "00011" THEN
                       state <= ST_WRITE_COPY;
                   END IF; 
 
+              WHEN ST_READ_A_DO =>
+                  state <= ST_READ_B;
+						
               WHEN ST_READ_B =>
-                  IF busin_valid  = '1' and busin_addr = "00010" THEN
+                  IF busin_valid  = '1' and busin_addr = "00011" THEN
                       state <= ST_INIT_COMPUTE;
+                  ELSIF busin_valid  = '1' and busin_addr /= "00011" THEN
+                      state <= ST_WRITE_COPY;
                   END IF; 
 
 				  WHEN ST_INIT_COMPUTE =>
@@ -180,17 +181,15 @@ BEGIN
 				  WHEN ST_COMPUTE =>
 						IF b_tmp_is_zero ='1' THEN
 							 state <= ST_WRITE_PGCD;
-						END IF;
-						IF b_tmp_bigger_than_a='1' THEN
+						ELSIF b_tmp_bigger_than_a='1' THEN
 							state <= ST_SWAP_AB;
-						END IF;
-						IF b_tmp_bigger_than_a='0' THEN
+						ELSIF b_tmp_bigger_than_a='0' THEN
 							state <= ST_DECR_B_FROM_A;
 						END IF;
 			
               WHEN ST_WRITE_PGCD =>
                   IF busout_eated = '1' THEN
-                      state  <= ST_READ;
+                      state  <= ST_READ_A;
                   END IF; 
 			
 				  WHEN ST_SWAP_AB =>
@@ -199,12 +198,9 @@ BEGIN
 				  WHEN ST_DECR_B_FROM_A =>
 					   state <= ST_SWAP_AB;				
 
-						
-
-
               WHEN ST_WRITE_COPY =>
                   IF busout_eated = '1' THEN
-                      state  <= ST_READ;
+                      state  <= ST_READ_A;
                   END IF; 
           END CASE;
       END IF;
@@ -212,7 +208,8 @@ BEGIN
 
     -- fonction de sortie    
     WITH state  SELECT busin_eated <=
-         '1'    WHEN   ST_READ,
+         '1'    WHEN   ST_READ_A,
+         '1'    WHEN   ST_READ_A_DO,
          '1'    WHEN   ST_READ_B,
          '0'    WHEN   OTHERS; 
 
@@ -222,17 +219,17 @@ BEGIN
         '0'     WHEN   OTHERS; 
 
     WITH state  SELECT CMD_Addr <=
-         LOAD   WHEN   ST_READ,
+         LOAD   WHEN   ST_READ_A,
 			LOAD   WHEN   ST_READ_B,
          NOOP   WHEN   OTHERS; 
 
     WITH state  SELECT CMD_Status <=
-         LOAD   WHEN   ST_READ,
+         LOAD   WHEN   ST_READ_A,
 			LOAD   WHEN   ST_READ_B,
          NOOP   WHEN   OTHERS; 
 
     WITH state  SELECT CMD_AB <=
-         LOAD   WHEN   ST_READ,
+         LOAD   WHEN   ST_READ_A,
 			LOAD_B   WHEN   ST_READ_B,
          NOOP   WHEN   OTHERS; 
 
