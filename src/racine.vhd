@@ -98,7 +98,7 @@ BEGIN
     BEGIN IF clk'EVENT AND clk = '1' THEN
         -- registre res : INIT, NOOP
         if ( CMD_Res = INIT ) then 
-		  res <= i*i;
+		  res <= UNSIGNED(std_logic_vector(i*i)(11 DOWNTO 0));
       else
           res <= res;
       end if;
