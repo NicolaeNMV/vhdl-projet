@@ -45,7 +45,7 @@ ARCHITECTURE Montage OF racine IS
     SIGNAL CMD_Status :  T_CMD_R; 
     SIGNAL R_Addr     :  STD_LOGIC_VECTOR (4 DOWNTO 0);
     SIGNAL R_Status   :  STD_LOGIC_VECTOR ( 2 DOWNTO 0);
-
+	 SIGNAL R_Data:  STD_LOGIC_VECTOR (23 DOWNTO 0);
 
     SIGNAL endmloop: STD_LOGIC;
 
@@ -93,7 +93,16 @@ BEGIN
     
     PROCESS (clk)
     BEGIN IF clk'EVENT AND clk = '1' THEN
-
+        -- R_Aaddr
+        if    ( CMD_Addr = LOAD ) then
+            R_Addr <= busin_addr;
+        end if;
+		  -- R_Status
+        if    ( CMD_Status = LOAD ) then
+            R_Status <= busin_status;
+				R_Data <= busin_data;
+        end if;
+	 
        -- registre i :  INIT, INCR, NOOP
       if ( CMD_i = INIT ) then
           i <= "000000000000";
@@ -109,11 +118,11 @@ BEGIN
     END IF; END PROCESS;
     
     busout_addr      <= R_Addr;
-    busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '1';
-    --TODO busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else ov_tmp;
-    --TODO busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else z_tmp;
-    busout_data(23 DOWNTO 12) <= busout_data(23 DOWNTO 12) when state=ST_WRITE_COPY else racine_sup;
-    busout_data(11 DOWNTO  0) <= busout_data(11 DOWNTO  0) when state=ST_WRITE_COPY else racine_inf;
+    busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '0';
+    busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '1';
+    busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else '0';
+    busout_data(23 DOWNTO 12) <= R_Data(23 DOWNTO 12) when state=ST_WRITE_COPY else racine_sup;
+    busout_data(11 DOWNTO  0) <= R_Data(11 DOWNTO  0) when state=ST_WRITE_COPY else racine_inf;
 
 -------------------------------------------------------------------------------
 -- Partie Controle
