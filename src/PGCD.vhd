@@ -54,9 +54,9 @@ ARCHITECTURE Montage OF PGCD IS
     SIGNAL CMD_COMPUTE: T_CMD_COMPUTE;
 	 
     -- signaux intermediaires
-    SIGNAL a_tmp   : SIGNED (23 DOWNTO 0);
-    SIGNAL b_tmp   : SIGNED (23 DOWNTO 0);
-    SIGNAL c_tmp   : SIGNED (23 DOWNTO 0);
+    SIGNAL a_tmp   : UNSIGNED (23 DOWNTO 0);
+    SIGNAL b_tmp   : UNSIGNED (23 DOWNTO 0);
+    SIGNAL c_tmp   : UNSIGNED (23 DOWNTO 0);
 
     SIGNAL z_tmp   : STD_LOGIC;
 	 SIGNAL b_tmp_is_zero:  STD_LOGIC;
@@ -75,7 +75,7 @@ ARCHITECTURE Montage OF PGCD IS
 		ST_COMPUTE,  -- the loop for compute
 		ST_SWAP_AB, -- swap AB
 		ST_DECR_B_FROM_A,
-		ST_WRITE_COPY, ST_WRITE_PGCD, ST_INIT_COMPUTE );
+		ST_WRITE_COPY, ST_LOAD_PGCD, ST_WRITE_PGCD, ST_INIT_COMPUTE );
     SIGNAL state : STATE_TYPE;
     
 BEGIN
@@ -92,7 +92,7 @@ BEGIN
     busout(23 DOWNTO  0) <= busout_data  ;
 
 	 -- if (b==0) goto ST_WRITE;
-	 b_tmp_is_zero <= '1' WHEN b_tmp = 0 ELSE '0';
+	 b_tmp_is_zero <= '1' WHEN b_tmp <= 0 ELSE '0';
 	 -- if (b>a) swap(a,b)
 	 b_tmp_bigger_than_a <= '1' WHEN b_tmp > a_tmp ELSE '0';
 	 
@@ -114,8 +114,8 @@ BEGIN
         end if;
 		  -- INIT Compute
 		  if (CMD_COMPUTE = INIT_COMPUTE) then
-				a_tmp <= SIGNED(R_A);
-				b_tmp <= SIGNED(R_B);
+				a_tmp <= UNSIGNED(R_A);
+				b_tmp <= UNSIGNED(R_B);
 		  end if;
 		  -- SWAP A et B
 		  if ( CMD_COMPUTE = SWAP_AB ) then
@@ -125,12 +125,12 @@ BEGIN
 		  end if;
 		  -- Decrement A by B
 		  if ( CMD_COMPUTE = DECR_B_FROM_A ) then
-				a_tmp <= a_tmp - b_tmp;
+				a_tmp <= UNSIGNED(a_tmp) - UNSIGNED(b_tmp);
 		  end if;
         -- R_Res
-        if    ( CMD_Res = LOAD ) then
-            R_Res <= std_logic_vector(a_tmp);
-        end if;
+        --if    ( CMD_Res = LOAD ) then
+        R_Res <= std_logic_vector(a_tmp);
+        --end if;
         -- R_Status
         if    ( CMD_Status = LOAD ) then
             R_Status <= busin_status;
@@ -186,6 +186,9 @@ BEGIN
 						ELSIF b_tmp_bigger_than_a='0' THEN
 							state <= ST_DECR_B_FROM_A;
 						END IF;
+
+				  WHEN ST_LOAD_PGCD =>
+						state <= ST_WRITE_PGCD;
 			
               WHEN ST_WRITE_PGCD =>
                   IF busout_eated = '1' THEN
@@ -209,7 +212,6 @@ BEGIN
     -- fonction de sortie    
     WITH state  SELECT busin_eated <=
          '1'    WHEN   ST_READ_A,
-         '1'    WHEN   ST_READ_A_DO,
          '1'    WHEN   ST_READ_B,
          '0'    WHEN   OTHERS; 
 
@@ -235,7 +237,7 @@ BEGIN
 
     WITH state  SELECT CMD_Res <=
          COMPUTE   WHEN   ST_Compute,
-			LOAD WHEN ST_WRITE_PGCD,
+			LOAD WHEN ST_LOAD_PGCD,
          NOOP   WHEN   OTHERS; 
 	
     WITH state  SELECT CMD_COMPUTE <=
