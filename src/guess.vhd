@@ -18,8 +18,8 @@ use IEEE.numeric_std.all;
 --   busin_addr               : 01000
 --
 -- Output:
---   busout_data(1 DOWNTO  0) : code retour du jeu : 00: lose, 01: win, 10: >, 11: <
---   busout_data(15 DOWNTO  8) : nombre de tour restant
+--   busout_data(17 DOWNTO  0) : nombre entree par le joueur
+--   busout_data(23 DOWNTO  18) : nombre de tour restant
 
 --   busout_status(26 DOWNTO 24) : status
 --   busout_address(31 DOWNTO 27)  : adresse
@@ -32,7 +32,7 @@ ENTITY guess IS
         -- interface busin
         busin        : in  STD_LOGIC_VECTOR(31 DOWNTO 0);
         busin_valid  : in  STD_LOGIC;
-        busin_eated  : out STD_LOGIC; 
+        busin_eated  : out STD_LOGIC;
 		  
         -- interface busout
         busout       : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -43,7 +43,9 @@ ENTITY guess IS
 		  button : in STD_LOGIC;
 		  switchs : in STD_LOGIC_VECTOR(17 downto 0);
 		  diode_inf : OUT STD_LOGIC;
-		  diode_sup : OUT STD_LOGIC
+		  diode_sup : OUT STD_LOGIC;
+		  diode_running : OUT STD_LOGIC;
+		  solution_out : out STD_LOGIC_VECTOR(17 downto 0)
 	);
 END guess;
 
@@ -59,25 +61,34 @@ ARCHITECTURE Montage OF guess IS
     
     TYPE T_CMD_data IS (INIT, NOOP);
     SIGNAL CMD_data : T_CMD_data; 
-    SIGNAL data:  STD_LOGIC_VECTOR (18 DOWNTO 0);
-    SIGNAL n:  UNSIGNED (18 DOWNTO 0);
+    SIGNAL data:  STD_LOGIC_VECTOR (23 DOWNTO 0);
+    SIGNAL n:  UNSIGNED (17 DOWNTO 0);
 	 
 	 -- proposition actuelle
     SIGNAL p : UNSIGNED (17 DOWNTO 0);
-
-    SIGNAL ret : UNSIGNED (1 DOWNTO 0);
 	 
     TYPE T_CMD_i IS (INIT, DECR, NOOP);
     SIGNAL CMD_i : T_CMD_i;
-    SIGNAL i : UNSIGNED (7 DOWNTO 0);
+    SIGNAL i : UNSIGNED (5 DOWNTO 0);
 
-    TYPE T_CMD_sup IS (INIT, NOOP);
+    TYPE T_CMD_sup IS (INIT, RESET, NOOP);
     SIGNAL CMD_sup : T_CMD_sup;
-    SIGNAL estsup: STD_LOGIC;
+    SIGNAL sup: STD_LOGIC;
 	 
-    TYPE T_CMD_inf IS (INIT, NOOP);
+    TYPE T_CMD_inf IS (INIT, RESET, NOOP);
     SIGNAL CMD_inf : T_CMD_inf;
+    SIGNAL inf: STD_LOGIC;
+	 
+    TYPE T_CMD_solution IS (INIT, RESET, NOOP);
+    SIGNAL CMD_solution : T_CMD_solution;
+    SIGNAL solution: STD_LOGIC_VECTOR(17 downto 0);
+	 
+    SIGNAL estsup: STD_LOGIC;
     SIGNAL estinf: STD_LOGIC;
+	 
+    TYPE T_CMD_running IS (INIT, NOOP);
+    SIGNAL CMD_running : T_CMD_running;
+    SIGNAL running: STD_LOGIC;
 	 
     SIGNAL endmloop: STD_LOGIC;
 	 
@@ -93,12 +104,14 @@ ARCHITECTURE Montage OF guess IS
     TYPE STATE_TYPE IS (
         ST_READ, -- lire la donnee
         ST_WRITE_COPY, --passer data au suivant (adresse ne me concerne pas)
-        MLOOP,
+        START_GAME,
+		  MLOOP,
 		  BUTTON_PRESSED,
 		  BUTTON_RELEASED,
 		  ST_INF,
 		  ST_WIN,
-		  ST_SUP
+		  ST_SUP,
+		  LOST
     );
     SIGNAL state : STATE_TYPE;
     
@@ -108,12 +121,17 @@ BEGIN
 --  Partie Opérative
 -------------------------------------------------------------------------------
     
-	 p <= UNSIGNED(switchs);
-	 n <= UNSIGNED(data);
-	 endmloop <= '1' when i="00000000" else '0';
+	 p <= UNSIGNED(switchs) when running='1' else "000000000000000000";
+	 n <= UNSIGNED(data(17 downto 0));
+	 endmloop <= '1' when i="000000" else '0';
+	 estsup <= '1' when p>=n else '0';
+	 estinf <= '1' when p<=n else '0';
 	 
-	 diode_inf <= estinf;
-	 diode_sup <= estsup;
+	 solution_out <= solution;
+	 
+	 diode_inf <= inf;
+	 diode_sup <= sup;
+	 diode_running <= running;
 	 
 	 busin_addr          <= busin(31 DOWNTO 27) ;
     busin_status        <= busin(26 DOWNTO 24) ;
@@ -126,40 +144,46 @@ BEGIN
     BEGIN IF clk'EVENT AND clk = '1' THEN
       -- registre n : pour la donnee
       if    ( CMD_data = INIT ) then
-           data(17 DOWNTO 0) <= busin_data(17 DOWNTO  0);
+           data <= busin_data;
       end if;
 		
-		if (CMD_sup = INIT and p>=n ) then 
-			estsup <= '1';
-		elsif (CMD_sup = INIT) then
-			estsup <= '0';
+		if (CMD_sup = INIT) then 
+			sup <= estsup;
+		elsif (CMD_sup = RESET) then
+			sup <= '0';
 		end if;
 		
-		if (CMD_inf = INIT and p<=n) then 
-			estinf <= '1';
-		elsif (CMD_sup = INIT) then
-			estinf <= '0';
+		if (CMD_inf = INIT) then 
+			inf <= estinf;
+		elsif (CMD_inf = RESET) then
+			inf <= '0';
 		end if;
 		
       -- registre i :  INIT, DECR, NOOP
       if ( CMD_i = INIT ) then
-          i <= "00001000"; -- 16
+          i <= "010000"; -- 16
       elsif (CMD_i = DECR ) then
           i <= i - 1;
       else
           i <= i;
       end if;
+		
+		if ( CMD_solution = RESET ) then
+			solution <= "000000000000000000";
+		elsif (CMD_solution = INIT ) then
+			solution <= std_logic_vector(n);
+		else
+			solution <= solution;
+		end if;
 
     END IF; END PROCESS;
     
     busout_addr      <= R_Addr;
     busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '1';
-    --TODO busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else ov_tmp;
-    --TODO busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else z_tmp;
-    busout_data(23 downto 16)<= busout_data(23 DOWNTO 16) when state=ST_WRITE_COPY else "00000000";
-	 busout_data(15 DOWNTO 8) <= busout_data(15 DOWNTO 8) when state=ST_WRITE_COPY else std_logic_vector(i);
-    busout_data(7 downto 2)  <= busout_data(7 DOWNTO 2) when state=ST_WRITE_COPY else "000000";
-	 busout_data(1 DOWNTO  0) <= busout_data(1 DOWNTO  0) when state=ST_WRITE_COPY else std_logic_vector(ret);
+    busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '0';
+    busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else '0';
+    busout_data(23 downto 18)<= data(23 DOWNTO 18) when state=ST_WRITE_COPY else std_logic_vector(i);
+	 busout_data(17 DOWNTO 0) <= data(17 DOWNTO 0) when state=ST_WRITE_COPY else std_logic_vector(p);
 
 -------------------------------------------------------------------------------
 -- Partie Controle
@@ -172,7 +196,7 @@ BEGIN
           CASE state IS
               WHEN ST_READ =>
                   IF busin_valid  = '1' and busin_addr = "01000" THEN
-                      state <= MLOOP;
+                      state <= START_GAME;
                   ELSIF busin_valid  = '1' and busin_addr /= "01000" THEN
                       state <= ST_WRITE_COPY;
                   END IF;
@@ -181,6 +205,12 @@ BEGIN
                   IF busout_eated = '1' THEN
                       state  <= ST_READ;
                   END IF; 
+				
+				  WHEN LOST => 
+						state <= ST_READ;
+				
+				  WHEN START_GAME =>
+						state <= MLOOP;
 
               WHEN MLOOP =>
                   IF button = '1' THEN
@@ -196,13 +226,15 @@ BEGIN
 						IF busout_eated = '0' THEN
 							state <= BUTTON_RELEASED;
 						ELSIF endmloop='1' THEN
-							state <= ST_READ;
+							state <= LOST;
 						ELSIF estinf='1' and estsup='1' THEN
 							state <= ST_WIN;
 						ELSIF estinf='1' THEN
 							state <= ST_INF;
 						ELSIF estsup='1' THEN
 							state <= ST_SUP;
+						ELSE
+							state <= ST_READ;
 						END IF;
 
               WHEN ST_WIN =>
@@ -227,6 +259,11 @@ BEGIN
         '1'     WHEN   ST_WRITE_COPY,
         '1'     WHEN   BUTTON_RELEASED,
         '0'     WHEN   OTHERS; 
+		  
+	 WITH state SELECT running <=
+			'0'    WHEN ST_READ,
+			'0'    WHEN ST_WRITE_COPY,
+			'1'    WHEN OTHERS;
 
     WITH state  SELECT CMD_Addr <=
          LOAD   WHEN   ST_READ,
@@ -238,10 +275,16 @@ BEGIN
 			
     WITH state  SELECT CMD_inf <=
          INIT   WHEN   BUTTON_RELEASED,
-         NOOP   WHEN   OTHERS;
+			RESET WHEN ST_WRITE_COPY,
+         RESET   WHEN   LOST,
+			RESET  WHEN   START_GAME,
+			NOOP   WHEN   OTHERS;
 			
     WITH state  SELECT CMD_sup <=
          INIT   WHEN   BUTTON_RELEASED,
+			RESET WHEN ST_WRITE_COPY,
+         RESET   WHEN   LOST,
+			RESET  WHEN   START_GAME,
          NOOP   WHEN   OTHERS; 
 			
     WITH state  SELECT CMD_data <=
@@ -249,10 +292,16 @@ BEGIN
          NOOP   WHEN   OTHERS;
 
         WITH state SELECT CMD_i <=
-        INIT WHEN ST_READ,
+        INIT WHEN START_GAME,
         DECR WHEN BUTTON_RELEASED,
         NOOP WHEN OTHERS;
-
+		  
+	WITH state SELECT CMD_solution <=
+			RESET WHEN START_GAME,
+			RESET WHEN ST_WRITE_COPY,
+			INIT WHEN LOST,
+			NOOP WHEN OTHERS;
+	 
 
 
 END Montage;

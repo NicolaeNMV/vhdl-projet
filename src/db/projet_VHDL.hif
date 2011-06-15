@@ -172,69 +172,6 @@ rs232in:inst
 
 # end
 # entity
-racine
-# storage
-db|projet_VHDL.(3).cnf
-db|projet_VHDL.(3).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-racine.vhd
-4a3a9ef412162b3bde5457286f706e61
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# lmf
-|usr|quartus|lmf|maxplus2.lmf
-9a59d39b0706640b4b2718e8a1ff1f
-# macro_sequence
-
-# end
-# entity
-PGCD
-# storage
-db|projet_VHDL.(6).cnf
-db|projet_VHDL.(6).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-PGCD.vhd
-cc13eb7895b74d511a1792cb30d6b738
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# hierarchies {
-PGCD:inst4
-}
-# lmf
-|usr|quartus|lmf|maxplus2.lmf
-9a59d39b0706640b4b2718e8a1ff1f
-# macro_sequence
-
-# end
-# entity
 adder12
 # storage
 db|projet_VHDL.(7).cnf
@@ -258,9 +195,653 @@ ON
 AUTO_ROM_RECOGNITION
 ON
 }
+# hierarchies {
+adder12:inst11
+}
 # lmf
 |usr|quartus|lmf|maxplus2.lmf
 9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+lpm_mult
+# storage
+db|projet_VHDL.(8).cnf
+db|projet_VHDL.(8).cnf
+# case_insensitive
+# source_file
+|usr|quartus|libraries|megafunctions|lpm_mult.tdf
+5c9227146945784ff15d4d5fc06fca
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTHA
+12
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHB
+12
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHP
+24
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHR
+24
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHS
+1
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LATENCY
+0
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+INPUT_B_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone II
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+APEX20K_TECHNOLOGY_MAPPER
+LUT
+TECH_MAPPER_APEX20K
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
+AUTO
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+mult_d8t
+PARAMETER_UNKNOWN
+USR
+INPUT_A_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+INPUT_B_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+USE_AHDL_IMPLEMENTATION
+OFF
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+datab9
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab11
+-1
+3
+datab10
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa11
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+mult_d8t
+# storage
+db|projet_VHDL.(9).cnf
+db|projet_VHDL.(9).cnf
+# case_insensitive
+# source_file
+db|mult_d8t.tdf
+f0bc604b386866a952f27df772f2ae15
+7
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result23
+-1
+3
+result22
+-1
+3
+result21
+-1
+3
+result20
+-1
+3
+result2
+-1
+3
+result19
+-1
+3
+result18
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab9
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab11
+-1
+3
+datab10
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa11
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+lpm_mult
+# storage
+db|projet_VHDL.(10).cnf
+db|projet_VHDL.(10).cnf
+# case_insensitive
+# source_file
+|usr|quartus|libraries|megafunctions|lpm_mult.tdf
+5c9227146945784ff15d4d5fc06fca
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTHA
+12
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHB
+12
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHP
+24
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHR
+24
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHS
+1
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+UNSIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LATENCY
+0
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+INPUT_B_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone II
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+APEX20K_TECHNOLOGY_MAPPER
+LUT
+TECH_MAPPER_APEX20K
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
+AUTO
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+mult_d8t
+PARAMETER_UNKNOWN
+USR
+INPUT_A_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+INPUT_B_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+USE_AHDL_IMPLEMENTATION
+OFF
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result23
+-1
+3
+result22
+-1
+3
+result21
+-1
+3
+result20
+-1
+3
+result2
+-1
+3
+result19
+-1
+3
+result18
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+datab9
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab11
+-1
+3
+datab10
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa11
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
 # macro_sequence
 
 # end
@@ -272,7 +853,7 @@ db|projet_VHDL.(0).cnf
 # case_insensitive
 # source_file
 Schema.bdf
-effdf0e6b5d37fa9f17b1e460269e80
+18f2fcd3e2548dc29745741f5f1d7346
 26
 # internal_option {
 BLOCK_DESIGN_NAMING
@@ -281,6 +862,105 @@ AUTO
 # hierarchies {
 |
 }
+# macro_sequence
+
+# end
+# entity
+racine
+# storage
+db|projet_VHDL.(6).cnf
+db|projet_VHDL.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+racine.vhd
+7cd228cde8347a79e9f7c8d9b3559a47
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+racine:inst10
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+PGCD
+# storage
+db|projet_VHDL.(11).cnf
+db|projet_VHDL.(11).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+PGCD.vhd
+a95676651c82eb4761daed129cd039b4
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+PGCD:inst12
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
+# macro_sequence
+
+# end
+# entity
+guess
+# storage
+db|projet_VHDL.(3).cnf
+db|projet_VHDL.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+guess.vhd
+4de83dafcd303fd7b463c34847e27a22
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# hierarchies {
+guess:inst4
+}
+# lmf
+|usr|quartus|lmf|maxplus2.lmf
+9a59d39b0706640b4b2718e8a1ff1f
 # macro_sequence
 
 # end

@@ -28,8 +28,8 @@ int main(int argc, char**argv)
 	    code |= (ttyS_read(vt100)&0xff)<< 0;
         printf("%3dth bus=%08x\n",nb,code);
         status = (code>>24)&0x7;
-        printf("Rcode=%5d reste=%5d  addr=%2d status=%1d C=%d V=%d Z=%d\n",
-            code&0x3, (code>>8)&0xFF, (code>>12)&0xFFF, (code>>27)&0x1F, status, 
+        printf("essai=%5d reste=%5d addr=%2d status=%1d C=%d V=%d Z=%d\n",
+            code&0x3FF, (code>>18)&0x7F, (code>>12)&0xFFF, (code>>27)&0x1F, status, 
             (code&0x1000)>>12, (status&2)!=0, (status&1)!=0);
         nb+=1;
     }

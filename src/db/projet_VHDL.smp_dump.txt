@@ -16,16 +16,46 @@ state.ST_SHIFT_DATA 0 0 1 1
 state.ST_WAIT_BUS 0 1 0 1 
 state.ST_EndLoop 1 0 0 1 
 
-State Machine - |Schema|PGCD:inst4|state
-Name state.ST_INIT_COMPUTE state.ST_WRITE_PGCD state.ST_WRITE_COPY state.ST_DECR_B_FROM_A state.ST_SWAP_AB state.ST_COMPUTE state.ST_READ_B state.ST_READ 
-state.ST_READ 0 0 0 0 0 0 0 0 
-state.ST_READ_B 0 0 0 0 0 0 1 1 
-state.ST_COMPUTE 0 0 0 0 0 1 0 1 
-state.ST_SWAP_AB 0 0 0 0 1 0 0 1 
-state.ST_DECR_B_FROM_A 0 0 0 1 0 0 0 1 
-state.ST_WRITE_COPY 0 0 1 0 0 0 0 1 
-state.ST_WRITE_PGCD 0 1 0 0 0 0 0 1 
-state.ST_INIT_COMPUTE 1 0 0 0 0 0 0 1 
+State Machine - |Schema|adder12:inst11|state
+Name state.ST_COMPUTE state.ST_WRITE_SUM state.ST_WRITE_COPY state.ST_READ 
+state.ST_READ 0 0 0 0 
+state.ST_WRITE_COPY 0 0 1 1 
+state.ST_WRITE_SUM 0 1 0 1 
+state.ST_COMPUTE 1 0 0 1 
+
+State Machine - |Schema|PGCD:inst12|state
+Name state.ST_INIT_COMPUTE state.ST_WRITE_PGCD state.ST_LOAD_PGCD state.ST_WRITE_COPY state.ST_DECR_B_FROM_A state.ST_SWAP_AB state.ST_COMPUTE state.ST_READ_B state.ST_READ_B_DO state.ST_READ_A_DO state.ST_READ_A 
+state.ST_READ_A 0 0 0 0 0 0 0 0 0 0 0 
+state.ST_READ_A_DO 0 0 0 0 0 0 0 0 0 1 1 
+state.ST_READ_B_DO 0 0 0 0 0 0 0 0 1 0 1 
+state.ST_READ_B 0 0 0 0 0 0 0 1 0 0 1 
+state.ST_COMPUTE 0 0 0 0 0 0 1 0 0 0 1 
+state.ST_SWAP_AB 0 0 0 0 0 1 0 0 0 0 1 
+state.ST_DECR_B_FROM_A 0 0 0 0 1 0 0 0 0 0 1 
+state.ST_WRITE_COPY 0 0 0 1 0 0 0 0 0 0 1 
+state.ST_LOAD_PGCD 0 0 1 0 0 0 0 0 0 0 1 
+state.ST_WRITE_PGCD 0 1 0 0 0 0 0 0 0 0 1 
+state.ST_INIT_COMPUTE 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Schema|racine:inst10|state
+Name state.MLOOP state.I_TROUVE state.ST_WRITE_COPY state.ST_READ 
+state.ST_READ 0 0 0 0 
+state.ST_WRITE_COPY 0 0 1 1 
+state.I_TROUVE 0 1 0 1 
+state.MLOOP 1 0 0 1 
+
+State Machine - |Schema|guess:inst4|state
+Name state.LOST state.ST_SUP state.ST_WIN state.ST_INF state.BUTTON_RELEASED state.BUTTON_PRESSED state.MLOOP state.START_GAME state.ST_WRITE_COPY state.ST_READ 
+state.ST_READ 0 0 0 0 0 0 0 0 0 0 
+state.ST_WRITE_COPY 0 0 0 0 0 0 0 0 1 1 
+state.START_GAME 0 0 0 0 0 0 0 1 0 1 
+state.MLOOP 0 0 0 0 0 0 1 0 0 1 
+state.BUTTON_PRESSED 0 0 0 0 0 1 0 0 0 1 
+state.BUTTON_RELEASED 0 0 0 0 1 0 0 0 0 1 
+state.ST_INF 0 0 0 1 0 0 0 0 0 1 
+state.ST_WIN 0 0 1 0 0 0 0 0 0 1 
+state.ST_SUP 0 1 0 0 0 0 0 0 0 1 
+state.LOST 1 0 0 0 0 0 0 0 0 1 
 
 State Machine - |Schema|busToRS232:inst2|state
 Name state.SHIFT state.W_RS232OUT state.LOOP_WRITE state.W_ND 

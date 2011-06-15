@@ -47,14 +47,6 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_global_assignment -name MISC_FILE "/disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/projet_VHDL.dpf"
-set_location_assignment PIN_W25 -to D[0]
-set_location_assignment PIN_W23 -to D[1]
-set_location_assignment PIN_Y27 -to D[2]
-set_location_assignment PIN_Y24 -to D[3]
-set_location_assignment PIN_Y23 -to D[4]
-set_location_assignment PIN_AA27 -to D[5]
-set_location_assignment PIN_AA24 -to D[6]
-set_location_assignment PIN_AC14 -to D[7]
 set_location_assignment PIN_AD15 -to CLK
 set_location_assignment PIN_D21 -to RX
 set_location_assignment PIN_E21 -to Tx
@@ -64,6 +56,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_global_assignment -name MISC_FILE /disk/svr216/sdc1/nfi/nicolae.namolovan/Projet_VHDL/src/projet_VHDL.dpf
+set_global_assignment -name VHDL_FILE guess.vhd
 set_global_assignment -name VHDL_FILE PGCD.vhd
 set_global_assignment -name VHDL_FILE racine.vhd
 set_global_assignment -name BDF_FILE Schema.bdf
@@ -72,4 +65,45 @@ set_global_assignment -name VHDL_FILE rs232in.vhd
 set_global_assignment -name VHDL_FILE busToRS232.vhd
 set_global_assignment -name VHDL_FILE busFromRS232.vhd
 set_global_assignment -name VHDL_FILE adder12.vhd
+set_location_assignment PIN_AJ6 -to diode_sup
+set_location_assignment PIN_AA24 -to diode_inf
+set_location_assignment PIN_AA23 -to switches[0]
+set_location_assignment PIN_AB26 -to switches[1]
+set_location_assignment PIN_AB25 -to switches[2]
+set_location_assignment PIN_AC27 -to switches[3]
+set_location_assignment PIN_AC26 -to switches[4]
+set_location_assignment PIN_AC24 -to switches[5]
+set_location_assignment PIN_AD25 -to switches[7]
+set_location_assignment PIN_AC23 -to switches[6]
+set_location_assignment PIN_AD24 -to switches[8]
+set_location_assignment PIN_AE27 -to switches[9]
+set_location_assignment PIN_W5 -to switches[10]
+set_location_assignment PIN_V10 -to switches[11]
+set_location_assignment PIN_U9 -to switches[12]
+set_location_assignment PIN_T9 -to switches[13]
+set_location_assignment PIN_L5 -to switches[14]
+set_location_assignment PIN_L4 -to switches[15]
+set_location_assignment PIN_L7 -to switches[16]
+set_location_assignment PIN_L8 -to switches[17]
+set_location_assignment PIN_U29 -to button
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_ASDO_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_location_assignment PIN_W27 -to diode_running
+set_location_assignment PIN_AK5 -to solution[1]
+set_location_assignment PIN_AJ5 -to solution[2]
+set_location_assignment PIN_AJ4 -to solution[3]
+set_location_assignment PIN_AK3 -to solution[4]
+set_location_assignment PIN_AH4 -to solution[5]
+set_location_assignment PIN_AJ3 -to solution[6]
+set_location_assignment PIN_AJ2 -to solution[7]
+set_location_assignment PIN_AH3 -to solution[8]
+set_location_assignment PIN_AD14 -to solution[9]
+set_location_assignment PIN_AC13 -to solution[10]
+set_location_assignment PIN_AB13 -to solution[11]
+set_location_assignment PIN_AC12 -to solution[12]
+set_location_assignment PIN_AB12 -to solution[13]
+set_location_assignment PIN_AC11 -to solution[14]
+set_location_assignment PIN_AD9 -to solution[15]
+set_location_assignment PIN_AD8 -to solution[16]
+set_location_assignment PIN_AJ7 -to solution[17]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

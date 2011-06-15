@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="projet_VHDL">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Schema|racine:inst10|lpm_mult:Mult0" CBX_FILE_NAME="mult_d8t.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Schema|racine:inst10|lpm_mult:Mult1" CBX_FILE_NAME="mult_d8t.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

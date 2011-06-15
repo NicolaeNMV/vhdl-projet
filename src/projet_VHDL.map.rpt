@@ -1,5 +1,5 @@
 Analysis & Synthesis report for projet_VHDL
-Fri Jun 10 17:39:54 2011
+Wed Jun 15 16:15:31 2011
 Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
 
 
@@ -13,18 +13,24 @@ Quartus II 64-Bit Version 10.0 Build 218 06/27/2010 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |Schema|rs232in:inst|state
-  9. State Machine - |Schema|busFromRS232:inst3|state
- 10. State Machine - |Schema|PGCD:inst4|state
- 11. State Machine - |Schema|busToRS232:inst2|state
- 12. State Machine - |Schema|rs232out:inst1|state
- 13. Registers Removed During Synthesis
- 14. Removed Registers Triggering Further Register Optimizations
- 15. General Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Parameter Settings for User Entity Instance: rs232out:inst1
- 18. Parameter Settings for User Entity Instance: rs232in:inst
- 19. Analysis & Synthesis Messages
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. State Machine - |Schema|rs232in:inst|state
+ 10. State Machine - |Schema|busFromRS232:inst3|state
+ 11. State Machine - |Schema|adder12:inst11|state
+ 12. State Machine - |Schema|PGCD:inst12|state
+ 13. State Machine - |Schema|racine:inst10|state
+ 14. State Machine - |Schema|guess:inst4|state
+ 15. State Machine - |Schema|busToRS232:inst2|state
+ 16. State Machine - |Schema|rs232out:inst1|state
+ 17. Registers Removed During Synthesis
+ 18. General Register Statistics
+ 19. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 20. Parameter Settings for User Entity Instance: rs232out:inst1
+ 21. Parameter Settings for User Entity Instance: rs232in:inst
+ 22. Parameter Settings for Inferred Entity Instance: racine:inst10|lpm_mult:Mult0
+ 23. Parameter Settings for Inferred Entity Instance: racine:inst10|lpm_mult:Mult1
+ 24. lpm_mult Parameter Settings by Entity Instance
+ 25. Analysis & Synthesis Messages
 
 
 
@@ -50,19 +56,19 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jun 10 17:39:54 2011    ;
+; Analysis & Synthesis Status        ; Successful - Wed Jun 15 16:15:31 2011    ;
 ; Quartus II 64-Bit Version          ; 10.0 Build 218 06/27/2010 SJ Web Edition ;
 ; Revision Name                      ; projet_VHDL                              ;
 ; Top-level Entity Name              ; Schema                                   ;
 ; Family                             ; Cyclone II                               ;
-; Total logic elements               ; 375                                      ;
-;     Total combinational functions  ; 254                                      ;
-;     Dedicated logic registers      ; 277                                      ;
-; Total registers                    ; 277                                      ;
-; Total pins                         ; 11                                       ;
+; Total logic elements               ; 750                                      ;
+;     Total combinational functions  ; 643                                      ;
+;     Dedicated logic registers      ; 402                                      ;
+; Total registers                    ; 402                                      ;
+; Total pins                         ; 42                                       ;
 ; Total virtual pins                 ; 0                                        ;
 ; Total memory bits                  ; 0                                        ;
-; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 4                                        ;
 ; Total PLLs                         ; 0                                        ;
 +------------------------------------+------------------------------------------+
 
@@ -164,12 +170,17 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                            ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
+; guess.vhd                        ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/guess.vhd        ;
 ; PGCD.vhd                         ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/PGCD.vhd         ;
+; racine.vhd                       ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/racine.vhd       ;
 ; Schema.bdf                       ; yes             ; User Block Diagram/Schematic File  ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/Schema.bdf       ;
 ; rs232out.vhd                     ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/rs232out.vhd     ;
 ; rs232in.vhd                      ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/rs232in.vhd      ;
 ; busToRS232.vhd                   ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/busToRS232.vhd   ;
 ; busFromRS232.vhd                 ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/busFromRS232.vhd ;
+; adder12.vhd                      ; yes             ; User VHDL File                     ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/adder12.vhd      ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                       ; /usr/quartus/libraries/megafunctions/lpm_mult.tdf                       ;
+; db/mult_d8t.tdf                  ; yes             ; Auto-Generated Megafunction        ; /disk/svr216/sdc1/nfi/gaetan.renaudeau/vhdl-projet/src/db/mult_d8t.tdf  ;
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------+
 
 
@@ -178,43 +189,69 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 375   ;
+; Estimated Total logic elements              ; 750   ;
 ;                                             ;       ;
-; Total combinational functions               ; 254   ;
+; Total combinational functions               ; 643   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 47    ;
-;     -- 3 input functions                    ; 128   ;
-;     -- <=2 input functions                  ; 79    ;
+;     -- 4 input functions                    ; 119   ;
+;     -- 3 input functions                    ; 398   ;
+;     -- <=2 input functions                  ; 126   ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 180   ;
-;     -- arithmetic mode                      ; 74    ;
+;     -- normal mode                          ; 362   ;
+;     -- arithmetic mode                      ; 281   ;
 ;                                             ;       ;
-; Total registers                             ; 277   ;
-;     -- Dedicated logic registers            ; 277   ;
+; Total registers                             ; 402   ;
+;     -- Dedicated logic registers            ; 402   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 11    ;
+; I/O pins                                    ; 42    ;
+; Embedded Multiplier 9-bit elements          ; 4     ;
 ; Maximum fan-out node                        ; CLK   ;
-; Maximum fan-out                             ; 277   ;
-; Total fan-out                               ; 1629  ;
-; Average fan-out                             ; 3.01  ;
+; Maximum fan-out                             ; 402   ;
+; Total fan-out                               ; 3227  ;
+; Average fan-out                             ; 2.96  ;
 +---------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                             ;
-+----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; |Schema                    ; 254 (1)           ; 277 (0)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 11   ; 0            ; |Schema                    ;              ;
-;    |PGCD:inst4|            ; 111 (111)         ; 135 (135)    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|PGCD:inst4         ;              ;
-;    |busFromRS232:inst3|    ; 11 (11)           ; 39 (39)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busFromRS232:inst3 ;              ;
-;    |busToRS232:inst2|      ; 43 (43)           ; 40 (40)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busToRS232:inst2   ;              ;
-;    |rs232in:inst|          ; 51 (51)           ; 33 (33)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232in:inst       ;              ;
-;    |rs232out:inst1|        ; 37 (37)           ; 30 (30)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232out:inst1     ;              ;
-+----------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                       ;
++------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                          ; Library Name ;
++------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+--------------+
+; |Schema                            ; 643 (2)           ; 402 (0)      ; 0           ; 0          ; 4            ; 0       ; 2         ; 42   ; 0            ; |Schema                                                      ;              ;
+;    |PGCD:inst12|                   ; 149 (149)         ; 112 (112)    ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|PGCD:inst12                                          ;              ;
+;    |adder12:inst11|                ; 45 (45)           ; 46 (46)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|adder12:inst11                                       ;              ;
+;    |busFromRS232:inst3|            ; 11 (11)           ; 36 (36)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busFromRS232:inst3                                   ;              ;
+;    |busToRS232:inst2|              ; 38 (38)           ; 40 (40)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|busToRS232:inst2                                     ;              ;
+;    |guess:inst4|                   ; 227 (227)         ; 60 (60)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|guess:inst4                                          ;              ;
+;    |racine:inst10|                 ; 87 (87)           ; 45 (45)      ; 0           ; 0          ; 4            ; 0       ; 2         ; 0    ; 0            ; |Schema|racine:inst10                                        ;              ;
+;       |lpm_mult:Mult0|             ; 0 (0)             ; 0 (0)        ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; |Schema|racine:inst10|lpm_mult:Mult0                         ;              ;
+;          |mult_d8t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; |Schema|racine:inst10|lpm_mult:Mult0|mult_d8t:auto_generated ;              ;
+;       |lpm_mult:Mult1|             ; 0 (0)             ; 0 (0)        ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; |Schema|racine:inst10|lpm_mult:Mult1                         ;              ;
+;          |mult_d8t:auto_generated| ; 0 (0)             ; 0 (0)        ; 0           ; 0          ; 2            ; 0       ; 1         ; 0    ; 0            ; |Schema|racine:inst10|lpm_mult:Mult1|mult_d8t:auto_generated ;              ;
+;    |rs232in:inst|                  ; 47 (47)           ; 33 (33)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232in:inst                                         ;              ;
+;    |rs232out:inst1|                ; 37 (37)           ; 30 (30)      ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; |Schema|rs232out:inst1                                       ;              ;
++------------------------------------+-------------------+--------------+-------------+------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary        ;
++---------------------------------------+-------------+
+; Statistic                             ; Number Used ;
++---------------------------------------+-------------+
+; Simple Multipliers (9-bit)            ; 0           ;
+; Simple Multipliers (18-bit)           ; 2           ;
+; Embedded Multiplier Blocks            ; --          ;
+; Embedded Multiplier 9-bit elements    ; 4           ;
+; Signed Embedded Multipliers           ; 0           ;
+; Unsigned Embedded Multipliers         ; 2           ;
+; Mixed Sign Embedded Multipliers       ; 0           ;
+; Variable Sign Embedded Multipliers    ; 0           ;
+; Dedicated Input Shift Register Chains ; 0           ;
++---------------------------------------+-------------+
+Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
 
 
 Encoding Type:  One-Hot
@@ -247,20 +284,68 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |Schema|PGCD:inst4|state                                                                                                                                                    ;
-+------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
-; Name                   ; state.ST_INIT_COMPUTE ; state.ST_WRITE_PGCD ; state.ST_WRITE_COPY ; state.ST_DECR_B_FROM_A ; state.ST_SWAP_AB ; state.ST_COMPUTE ; state.ST_READ_B ; state.ST_READ ;
-+------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
-; state.ST_READ          ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0             ;
-; state.ST_READ_B        ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 1               ; 1             ;
-; state.ST_COMPUTE       ; 0                     ; 0                   ; 0                   ; 0                      ; 0                ; 1                ; 0               ; 1             ;
-; state.ST_SWAP_AB       ; 0                     ; 0                   ; 0                   ; 0                      ; 1                ; 0                ; 0               ; 1             ;
-; state.ST_DECR_B_FROM_A ; 0                     ; 0                   ; 0                   ; 1                      ; 0                ; 0                ; 0               ; 1             ;
-; state.ST_WRITE_COPY    ; 0                     ; 0                   ; 1                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
-; state.ST_WRITE_PGCD    ; 0                     ; 1                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
-; state.ST_INIT_COMPUTE  ; 1                     ; 0                   ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 1             ;
-+------------------------+-----------------------+---------------------+---------------------+------------------------+------------------+------------------+-----------------+---------------+
++---------------------------------------------------------------------------------------------------+
+; State Machine - |Schema|adder12:inst11|state                                                      ;
++---------------------+------------------+--------------------+---------------------+---------------+
+; Name                ; state.ST_COMPUTE ; state.ST_WRITE_SUM ; state.ST_WRITE_COPY ; state.ST_READ ;
++---------------------+------------------+--------------------+---------------------+---------------+
+; state.ST_READ       ; 0                ; 0                  ; 0                   ; 0             ;
+; state.ST_WRITE_COPY ; 0                ; 0                  ; 1                   ; 1             ;
+; state.ST_WRITE_SUM  ; 0                ; 1                  ; 0                   ; 1             ;
+; state.ST_COMPUTE    ; 1                ; 0                  ; 0                   ; 1             ;
++---------------------+------------------+--------------------+---------------------+---------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Schema|PGCD:inst12|state                                                                                                                                                                                                                    ;
++------------------------+-----------------------+---------------------+--------------------+---------------------+------------------------+------------------+------------------+-----------------+--------------------+--------------------+-----------------+
+; Name                   ; state.ST_INIT_COMPUTE ; state.ST_WRITE_PGCD ; state.ST_LOAD_PGCD ; state.ST_WRITE_COPY ; state.ST_DECR_B_FROM_A ; state.ST_SWAP_AB ; state.ST_COMPUTE ; state.ST_READ_B ; state.ST_READ_B_DO ; state.ST_READ_A_DO ; state.ST_READ_A ;
++------------------------+-----------------------+---------------------+--------------------+---------------------+------------------------+------------------+------------------+-----------------+--------------------+--------------------+-----------------+
+; state.ST_READ_A        ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 0               ;
+; state.ST_READ_A_DO     ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 1                  ; 1               ;
+; state.ST_READ_B_DO     ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 1                  ; 0                  ; 1               ;
+; state.ST_READ_B        ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 1               ; 0                  ; 0                  ; 1               ;
+; state.ST_COMPUTE       ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 1                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_SWAP_AB       ; 0                     ; 0                   ; 0                  ; 0                   ; 0                      ; 1                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_DECR_B_FROM_A ; 0                     ; 0                   ; 0                  ; 0                   ; 1                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_WRITE_COPY    ; 0                     ; 0                   ; 0                  ; 1                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_LOAD_PGCD     ; 0                     ; 0                   ; 1                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_WRITE_PGCD    ; 0                     ; 1                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
+; state.ST_INIT_COMPUTE  ; 1                     ; 0                   ; 0                  ; 0                   ; 0                      ; 0                ; 0                ; 0               ; 0                  ; 0                  ; 1               ;
++------------------------+-----------------------+---------------------+--------------------+---------------------+------------------------+------------------+------------------+-----------------+--------------------+--------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------+
+; State Machine - |Schema|racine:inst10|state                                              ;
++---------------------+-------------+----------------+---------------------+---------------+
+; Name                ; state.MLOOP ; state.I_TROUVE ; state.ST_WRITE_COPY ; state.ST_READ ;
++---------------------+-------------+----------------+---------------------+---------------+
+; state.ST_READ       ; 0           ; 0              ; 0                   ; 0             ;
+; state.ST_WRITE_COPY ; 0           ; 0              ; 1                   ; 1             ;
+; state.I_TROUVE      ; 0           ; 1              ; 0                   ; 1             ;
+; state.MLOOP         ; 1           ; 0              ; 0                   ; 1             ;
++---------------------+-------------+----------------+---------------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Schema|guess:inst4|state                                                                                                                                                             ;
++-----------------------+------------+--------------+--------------+--------------+-----------------------+----------------------+-------------+------------------+---------------------+---------------+
+; Name                  ; state.LOST ; state.ST_SUP ; state.ST_WIN ; state.ST_INF ; state.BUTTON_RELEASED ; state.BUTTON_PRESSED ; state.MLOOP ; state.START_GAME ; state.ST_WRITE_COPY ; state.ST_READ ;
++-----------------------+------------+--------------+--------------+--------------+-----------------------+----------------------+-------------+------------------+---------------------+---------------+
+; state.ST_READ         ; 0          ; 0            ; 0            ; 0            ; 0                     ; 0                    ; 0           ; 0                ; 0                   ; 0             ;
+; state.ST_WRITE_COPY   ; 0          ; 0            ; 0            ; 0            ; 0                     ; 0                    ; 0           ; 0                ; 1                   ; 1             ;
+; state.START_GAME      ; 0          ; 0            ; 0            ; 0            ; 0                     ; 0                    ; 0           ; 1                ; 0                   ; 1             ;
+; state.MLOOP           ; 0          ; 0            ; 0            ; 0            ; 0                     ; 0                    ; 1           ; 0                ; 0                   ; 1             ;
+; state.BUTTON_PRESSED  ; 0          ; 0            ; 0            ; 0            ; 0                     ; 1                    ; 0           ; 0                ; 0                   ; 1             ;
+; state.BUTTON_RELEASED ; 0          ; 0            ; 0            ; 0            ; 1                     ; 0                    ; 0           ; 0                ; 0                   ; 1             ;
+; state.ST_INF          ; 0          ; 0            ; 0            ; 1            ; 0                     ; 0                    ; 0           ; 0                ; 0                   ; 1             ;
+; state.ST_WIN          ; 0          ; 0            ; 1            ; 0            ; 0                     ; 0                    ; 0           ; 0                ; 0                   ; 1             ;
+; state.ST_SUP          ; 0          ; 1            ; 0            ; 0            ; 0                     ; 0                    ; 0           ; 0                ; 0                   ; 1             ;
+; state.LOST            ; 1          ; 0            ; 0            ; 0            ; 0                     ; 0                    ; 0           ; 0                ; 0                   ; 1             ;
++-----------------------+------------+--------------+--------------+--------------+-----------------------+----------------------+-------------+------------------+---------------------+---------------+
 
 
 Encoding Type:  One-Hot
@@ -289,30 +374,40 @@ Encoding Type:  One-Hot
 +-------------+-------------+-----------+-------------+------------+
 
 
-+--------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                   ;
-+----------------------------------------+---------------------------------------------+
-; Register name                          ; Reason for Removal                          ;
-+----------------------------------------+---------------------------------------------+
-; rs232out:inst1|R_data[9]               ; Stuck at VCC due to stuck port data_in      ;
-; PGCD:inst4|state.ST_WRITE_PGCD         ; Stuck at GND due to stuck port data_in      ;
-; PGCD:inst4|R_Res[0..23]                ; Stuck at GND due to stuck port clock_enable ;
-; Total Number of Removed Registers = 26 ;                                             ;
-+----------------------------------------+---------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                          ;
-+--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
-; Register name                  ; Reason for Removal        ; Registers Removed due to This Register                                                  ;
-+--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
-; PGCD:inst4|state.ST_WRITE_PGCD ; Stuck at GND              ; PGCD:inst4|R_Res[22], PGCD:inst4|R_Res[21], PGCD:inst4|R_Res[20], PGCD:inst4|R_Res[19], ;
-;                                ; due to stuck port data_in ; PGCD:inst4|R_Res[18], PGCD:inst4|R_Res[17], PGCD:inst4|R_Res[16], PGCD:inst4|R_Res[15], ;
-;                                ;                           ; PGCD:inst4|R_Res[14], PGCD:inst4|R_Res[13], PGCD:inst4|R_Res[12], PGCD:inst4|R_Res[11], ;
-;                                ;                           ; PGCD:inst4|R_Res[10], PGCD:inst4|R_Res[9], PGCD:inst4|R_Res[8], PGCD:inst4|R_Res[7],    ;
-;                                ;                           ; PGCD:inst4|R_Res[6], PGCD:inst4|R_Res[5], PGCD:inst4|R_Res[4], PGCD:inst4|R_Res[3],     ;
-;                                ;                           ; PGCD:inst4|R_Res[2], PGCD:inst4|R_Res[1], PGCD:inst4|R_Res[0], PGCD:inst4|R_Res[23]     ;
-+--------------------------------+---------------------------+-----------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; adder12:inst11|R_B[12]                 ; Stuck at GND due to stuck port data_in ;
+; adder12:inst11|R_A[12]                 ; Stuck at GND due to stuck port data_in ;
+; racine:inst10|R_Data[1]                ; Merged with racine:inst10|op[1]        ;
+; racine:inst10|R_Data[0]                ; Merged with racine:inst10|op[0]        ;
+; racine:inst10|R_Data[2]                ; Merged with racine:inst10|op[2]        ;
+; racine:inst10|R_Data[3]                ; Merged with racine:inst10|op[3]        ;
+; racine:inst10|R_Data[4]                ; Merged with racine:inst10|op[4]        ;
+; racine:inst10|R_Data[5]                ; Merged with racine:inst10|op[5]        ;
+; racine:inst10|R_Data[6]                ; Merged with racine:inst10|op[6]        ;
+; racine:inst10|R_Data[7]                ; Merged with racine:inst10|op[7]        ;
+; racine:inst10|R_Data[8]                ; Merged with racine:inst10|op[8]        ;
+; racine:inst10|R_Data[9]                ; Merged with racine:inst10|op[9]        ;
+; racine:inst10|R_Data[10]               ; Merged with racine:inst10|op[10]       ;
+; racine:inst10|R_Data[11]               ; Merged with racine:inst10|op[11]       ;
+; racine:inst10|R_Data[12]               ; Merged with racine:inst10|op[12]       ;
+; racine:inst10|R_Data[13]               ; Merged with racine:inst10|op[13]       ;
+; racine:inst10|R_Data[14]               ; Merged with racine:inst10|op[14]       ;
+; racine:inst10|R_Data[15]               ; Merged with racine:inst10|op[15]       ;
+; racine:inst10|R_Data[16]               ; Merged with racine:inst10|op[16]       ;
+; racine:inst10|R_Data[17]               ; Merged with racine:inst10|op[17]       ;
+; racine:inst10|R_Data[18]               ; Merged with racine:inst10|op[18]       ;
+; racine:inst10|R_Data[19]               ; Merged with racine:inst10|op[19]       ;
+; racine:inst10|R_Data[20]               ; Merged with racine:inst10|op[20]       ;
+; racine:inst10|R_Data[21]               ; Merged with racine:inst10|op[21]       ;
+; racine:inst10|R_Data[22]               ; Merged with racine:inst10|op[22]       ;
+; racine:inst10|R_Data[23]               ; Merged with racine:inst10|op[23]       ;
+; rs232out:inst1|R_data[9]               ; Stuck at VCC due to stuck port data_in ;
+; Total Number of Removed Registers = 27 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -320,12 +415,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 277   ;
-; Number of registers using Synchronous Clear  ; 14    ;
-; Number of registers using Synchronous Load   ; 56    ;
+; Total registers                              ; 402   ;
+; Number of registers using Synchronous Clear  ; 26    ;
+; Number of registers using Synchronous Load   ; 71    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 220   ;
+; Number of registers using Clock Enable       ; 311   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -335,22 +430,26 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Schema|busFromRS232:inst3|R_i[2]    ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |Schema|PGCD:inst4|R_INPUT[6]        ;
-; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Schema|PGCD:inst4|b_tmp[12]         ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_i[3]      ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[27]    ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Schema|rs232out:inst1|R_data[3]     ;
-; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |Schema|rs232in:inst|R_baud[11]      ;
-; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |Schema|PGCD:inst4|a_tmp[20]         ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[3]     ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[24]    ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[22]    ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |Schema|busFromRS232:inst3|R_i[0]    ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |Schema|PGCD:inst12|R_B[12]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Schema|guess:inst4|i[3]             ;
+; 3:1                ; 18 bits   ; 36 LEs        ; 18 LEs               ; 18 LEs                 ; Yes        ; |Schema|guess:inst4|solution[13]     ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_i[0]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Schema|rs232out:inst1|R_data[2]     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Schema|guess:inst4|inf              ;
+; 3:1                ; 14 bits   ; 28 LEs        ; 28 LEs               ; 0 LEs                  ; Yes        ; |Schema|rs232in:inst|R_baud[2]       ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |Schema|PGCD:inst12|R_A[6]           ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[2]     ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |Schema|busToRS232:inst2|R_32[10]    ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Schema|busToRS232:inst2|state       ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Schema|busFromRS232:inst3|Selector3 ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Schema|PGCD:inst4|Selector6         ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Schema|busToRS232:inst2|Selector1   ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |Schema|PGCD:inst4|Selector1         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |Schema|adder12:inst11|Selector0     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |Schema|racine:inst10|Selector0      ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Schema|busFromRS232:inst3|Selector1 ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Schema|busToRS232:inst2|Selector3   ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Schema|adder12:inst11|Selector1     ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |Schema|racine:inst10|Selector3      ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |Schema|PGCD:inst12|Selector1        ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |Schema|guess:inst4|Selector2        ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 
 
@@ -376,14 +475,118 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: racine:inst10|lpm_mult:Mult0     ;
++------------------------------------------------+------------+---------------------+
+; Parameter Name                                 ; Value      ; Type                ;
++------------------------------------------------+------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 12         ; Untyped             ;
+; LPM_WIDTHB                                     ; 12         ; Untyped             ;
+; LPM_WIDTHP                                     ; 24         ; Untyped             ;
+; LPM_WIDTHR                                     ; 24         ; Untyped             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 0          ; Untyped             ;
+; LATENCY                                        ; 0          ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped             ;
+; USE_EAB                                        ; OFF        ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_d8t   ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped             ;
++------------------------------------------------+------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: racine:inst10|lpm_mult:Mult1     ;
++------------------------------------------------+------------+---------------------+
+; Parameter Name                                 ; Value      ; Type                ;
++------------------------------------------------+------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 12         ; Untyped             ;
+; LPM_WIDTHB                                     ; 12         ; Untyped             ;
+; LPM_WIDTHP                                     ; 24         ; Untyped             ;
+; LPM_WIDTHR                                     ; 24         ; Untyped             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 0          ; Untyped             ;
+; LATENCY                                        ; 0          ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped             ;
+; USE_EAB                                        ; OFF        ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO       ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_d8t   ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped             ;
++------------------------------------------------+------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                       ;
++---------------------------------------+------------------------------+
+; Name                                  ; Value                        ;
++---------------------------------------+------------------------------+
+; Number of entity instances            ; 2                            ;
+; Entity Instance                       ; racine:inst10|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 12                           ;
+;     -- LPM_WIDTHB                     ; 12                           ;
+;     -- LPM_WIDTHP                     ; 24                           ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                     ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                           ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                           ;
+;     -- USE_EAB                        ; OFF                          ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                         ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                           ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                           ;
+; Entity Instance                       ; racine:inst10|lpm_mult:Mult1 ;
+;     -- LPM_WIDTHA                     ; 12                           ;
+;     -- LPM_WIDTHB                     ; 12                           ;
+;     -- LPM_WIDTHP                     ; 24                           ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                     ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                           ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                           ;
+;     -- USE_EAB                        ; OFF                          ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                         ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                           ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                           ;
++---------------------------------------+------------------------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 10.0 Build 218 06/27/2010 SJ Web Edition
-    Info: Processing started: Fri Jun 10 17:39:49 2011
+    Info: Processing started: Wed Jun 15 16:15:24 2011
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projet_VHDL -c projet_VHDL
+Info: Found 2 design units, including 1 entities, in source file guess.vhd
+    Info: Found design unit 1: guess-Montage
+    Info: Found entity 1: guess
 Info: Found 2 design units, including 1 entities, in source file PGCD.vhd
     Info: Found design unit 1: PGCD-Montage
     Info: Found entity 1: PGCD
@@ -410,19 +613,44 @@ Info: Found 2 design units, including 1 entities, in source file adder12.vhd
 Info: Elaborating entity "Schema" for the top level hierarchy
 Info: Elaborating entity "rs232out" for hierarchy "rs232out:inst1"
 Info: Elaborating entity "busToRS232" for hierarchy "busToRS232:inst2"
-Info: Elaborating entity "PGCD" for hierarchy "PGCD:inst4"
-Warning (10036): Verilog HDL or VHDL warning at PGCD.vhd(60): object "diff_a_b" assigned a value but never read
+Info: Elaborating entity "guess" for hierarchy "guess:inst4"
+Warning (10036): Verilog HDL or VHDL warning at guess.vhd(57): object "CMD_Addr" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at guess.vhd(58): object "CMD_Status" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at guess.vhd(59): used implicit default value for signal "R_Addr" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at guess.vhd(60): used implicit default value for signal "R_Status" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at guess.vhd(99): object "busin_status" assigned a value but never read
+Info: Elaborating entity "racine" for hierarchy "racine:inst10"
+Info: Elaborating entity "PGCD" for hierarchy "PGCD:inst12"
+Warning (10036): Verilog HDL or VHDL warning at PGCD.vhd(48): object "R_Status" assigned a value but never read
+Info: Elaborating entity "adder12" for hierarchy "adder12:inst11"
 Info: Elaborating entity "busFromRS232" for hierarchy "busFromRS232:inst3"
 Info: Elaborating entity "rs232in" for hierarchy "rs232in:inst"
+Info: Inferred 2 megafunctions from design logic
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "racine:inst10|Mult0"
+    Info: Inferred multiplier megafunction ("lpm_mult") from the following logic: "racine:inst10|Mult1"
+Info: Elaborated megafunction instantiation "racine:inst10|lpm_mult:Mult0"
+Info: Instantiated megafunction "racine:inst10|lpm_mult:Mult0" with the following parameter:
+    Info: Parameter "LPM_WIDTHA" = "12"
+    Info: Parameter "LPM_WIDTHB" = "12"
+    Info: Parameter "LPM_WIDTHP" = "24"
+    Info: Parameter "LPM_WIDTHR" = "24"
+    Info: Parameter "LPM_WIDTHS" = "1"
+    Info: Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info: Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info: Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info: Parameter "MAXIMIZE_SPEED" = "5"
+Info: Found 1 design units, including 1 entities, in source file db/mult_d8t.tdf
+    Info: Found entity 1: mult_d8t
 Info: Generating hard_block partition "hard_block:auto_generated_inst"
-Info: Implemented 387 device resources after synthesis - the final resource count might be different
-    Info: Implemented 2 input pins
-    Info: Implemented 9 output pins
-    Info: Implemented 376 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 312 megabytes
-    Info: Processing ended: Fri Jun 10 17:39:54 2011
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:05
+Info: Implemented 796 device resources after synthesis - the final resource count might be different
+    Info: Implemented 21 input pins
+    Info: Implemented 21 output pins
+    Info: Implemented 750 logic cells
+    Info: Implemented 4 DSP elements
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 344 megabytes
+    Info: Processing ended: Wed Jun 15 16:15:31 2011
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 

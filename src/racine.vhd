@@ -8,7 +8,7 @@ use IEEE.numeric_std.all;
 --
 -- Input:
 --   busin_data(23 DOWNTO  0) : nombre
---   busin_addr               : 00001
+--   busin_addr               : 00100
 --
 -- Output:
 --   busout_data(11 DOWNTO  0)  : racine inferieur
@@ -119,7 +119,7 @@ BEGIN
     
     busout_addr      <= R_Addr;
     busout_status(2) <= R_status(2) when state=ST_WRITE_COPY else '0';
-    busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '1';
+    busout_status(1) <= R_status(1) when state=ST_WRITE_COPY else '0';
     busout_status(0) <= R_status(0) when state=ST_WRITE_COPY else '0';
     busout_data(23 DOWNTO 12) <= R_Data(23 DOWNTO 12) when state=ST_WRITE_COPY else racine_sup;
     busout_data(11 DOWNTO  0) <= R_Data(11 DOWNTO  0) when state=ST_WRITE_COPY else racine_inf;

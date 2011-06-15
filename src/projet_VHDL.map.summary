@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Fri Jun 10 17:39:54 2011
+Analysis & Synthesis Status : Successful - Wed Jun 15 16:15:31 2011
 Quartus II 64-Bit Version : 10.0 Build 218 06/27/2010 SJ Web Edition
 Revision Name : projet_VHDL
 Top-level Entity Name : Schema
 Family : Cyclone II
-Total logic elements : 375
-    Total combinational functions : 254
-    Dedicated logic registers : 277
-Total registers : 277
-Total pins : 11
+Total logic elements : 750
+    Total combinational functions : 643
+    Dedicated logic registers : 402
+Total registers : 402
+Total pins : 42
 Total virtual pins : 0
 Total memory bits : 0
-Embedded Multiplier 9-bit elements : 0
+Embedded Multiplier 9-bit elements : 4
 Total PLLs : 0
