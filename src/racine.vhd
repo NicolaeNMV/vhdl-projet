@@ -55,6 +55,7 @@ ARCHITECTURE Montage OF racine IS
     TYPE T_CMD_i IS (INIT, INCR, NOOP);
     SIGNAL CMD_i : T_CMD_i;
     SIGNAL i : UNSIGNED (11 DOWNTO 0);
+    SIGNAL im2 : UNSIGNED (11 DOWNTO 0);
 
     -- les bus in & out
     SIGNAL busin_addr   : STD_LOGIC_VECTOR( 4 DOWNTO 0);
@@ -78,9 +79,10 @@ BEGIN
 -------------------------------------------------------------------------------
 --  Partie Opérative
 -------------------------------------------------------------------------------
-    racine_inf <= std_logic_vector(UNSIGNED(i-1));
-    racine_sup <= std_logic_vector(UNSIGNED(i));
-    endmloop <= '0' when i*i < UNSIGNED(op)  else '1';
+    racine_sup <= std_logic_vector(UNSIGNED(im2)) when im2*im2 = UNSIGNED(op) else std_logic_vector(UNSIGNED(im2+1));
+    racine_inf <= std_logic_vector(UNSIGNED(im2));
+    im2 <= UNSIGNED(i-2);
+	 endmloop <= '1' when i*i > UNSIGNED(op)  else '0';
 
     busin_addr          <= busin(31 DOWNTO 27) ;
     busin_status        <= busin(26 DOWNTO 24) ;
